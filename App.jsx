@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Login      from './pages/Login.jsx'
-import Pricing    from './pages/Pricing.jsx'
-import AppDemo    from './pages/AppDemo.jsx'
-import Disclaimer from './pages/Disclaimer.jsx'
-import About      from './pages/About.jsx'
-import Start      from './pages/Start.jsx'
+import Login      from './Login.jsx'
+import Pricing    from './Pricing.jsx'
+import AppDemo    from './AppDemo.jsx'
+import Disclaimer from './Disclaimer.jsx'
+import About      from './About.jsx'
+import Start      from './Start.jsx'
 
 export default function App() {
   return (
