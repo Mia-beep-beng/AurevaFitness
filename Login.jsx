@@ -189,7 +189,19 @@ export default function Login() {
     if (!email.includes('@')) { setError('Please enter a valid email address.'); return }
 
     setLoading(true)
-    // ── Connect your backend here (Supabase / Firebase) ──
+
+    // ── ADMIN CHECK ──────────────────────────────────────────────────────────
+    // Admin credentials are stored securely in Vercel environment variables.
+    // Set VITE_ADMIN_EMAIL and VITE_ADMIN_PASSWORD in Vercel → Settings → Environment Variables
+    const adminEmail = import.meta.env.VITE_ADMIN_EMAIL || ''
+    const adminPass  = import.meta.env.VITE_ADMIN_PASSWORD || ''
+
+    if (email.trim().toLowerCase() === adminEmail.toLowerCase() && pw === adminPass) {
+      setTimeout(() => { navigate('/admin') }, 600)
+      return
+    }
+
+    // ── REGULAR USER — Connect your backend here (Supabase / Firebase) ──────
     // Example with Supabase:
     // const { error } = await supabase.auth.signInWithPassword({ email, password: pw })
     // if (error) { setError(error.message); setLoading(false); return }
