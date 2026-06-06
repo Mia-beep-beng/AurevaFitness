@@ -61,7 +61,7 @@ const css = `
   .day-card:hover { border-color:var(--gold); transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,150,12,.12); }
   .day-card-top { height:4px; }
   .day-card-img { aspect-ratio:3/4; overflow:hidden; background:#0e0e0e; position:relative; }
-  .day-card-img img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transition:transform .35s; }
+  .day-card-img img { width:100%; height:100%; object-fit:cover; object-position:left top; transition:transform .35s; }
   .day-card:hover .day-card-img img { transform:scale(1.04); }
   .day-card-placeholder { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; }
   .ph-icon { font-size:22px; }
@@ -77,7 +77,7 @@ const css = `
 
   /* Modal hero */
   .wk-hero { position:relative; overflow:hidden; }
-  .wk-hero img { width:100%; display:block; max-height:420px; object-fit:cover; object-position:center top; }
+  .wk-hero img { width:100%; display:block; max-height:420px; object-fit:cover; object-position:left top; }
   .wk-hero-fallback { height:200px; display:flex; align-items:center; justify-content:center; }
   .wk-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,.4) 50%, transparent 100%); }
   .wk-close { position:absolute; top:14px; right:14px; background:rgba(0,0,0,.9); border:1.5px solid var(--gold); color:var(--gold); font-family:'Montserrat',sans-serif; font-size:11px; font-weight:800; letter-spacing:2px; padding:9px 16px; cursor:pointer; transition:all .2s; z-index:10; }
