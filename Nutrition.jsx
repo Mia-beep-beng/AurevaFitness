@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RECIPES, CATEGORIES } from './recipes.js'
+import { RECIPE_IMAGES } from './recipeImages.js'
 
 const ACTIVITY_LEVELS = [
   { val:'1.2',   label:'Sedentary — little or no exercise' },
@@ -184,13 +185,13 @@ const css = `
 `
 
 function RecipeCard({ recipe, onClick }) {
-  const [imgErr, setImgErr] = useState(false)
   const catEmojis = { breakfast:'🌅', bowls:'🥣', fish:'🐟', stirfry:'🥘', plates:'💪', wraps:'🌯' }
+  const imgSrc = RECIPE_IMAGES[recipe.id]
   return (
     <div className="recipe-card" onClick={() => onClick(recipe)}>
       <div className="recipe-img-wrap" style={{ background: CAT_COLORS[recipe.category] || '#111' }}>
-        {!imgErr
-          ? <img className="recipe-img" src={recipe.img} alt={recipe.name} onError={() => setImgErr(true)}/>
+        {imgSrc
+          ? <img className="recipe-img" src={imgSrc} alt={recipe.name}/>
           : <div className="recipe-img-placeholder">
               <span className="ph-icon">{catEmojis[recipe.category] || '🍽'}</span>
               <span className="ph-txt">AUREVA APPROVED</span>
@@ -216,14 +217,14 @@ function RecipeCard({ recipe, onClick }) {
 }
 
 function RecipeModal({ recipe, onClose }) {
-  const [imgErr, setImgErr] = useState(false)
   const catEmojis = { breakfast:'🌅', bowls:'🥣', fish:'🐟', stirfry:'🥘', plates:'💪', wraps:'🌯' }
+  const imgSrc = RECIPE_IMAGES[recipe.id]
   return (
     <div className="modal-overlay" onClick={e => { if(e.target===e.currentTarget) onClose() }}>
       <div className="recipe-modal">
         <div className="rm-hero">
-          {!imgErr
-            ? <img src={recipe.img} alt={recipe.name} onError={() => setImgErr(true)} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+          {imgSrc
+            ? <img src={imgSrc} alt={recipe.name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             : <div className="rm-hero-fallback" style={{ background: CAT_COLORS[recipe.category] || '#111' }}>
                 <span>{catEmojis[recipe.category] || '🍽'}</span>
               </div>
