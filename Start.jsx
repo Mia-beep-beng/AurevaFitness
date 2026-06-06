@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const css = `
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -10,7 +11,7 @@ const css = `
   .page {
     min-height:100vh; background:var(--black);
     display:flex; flex-direction:column; align-items:center;
-    font-family:'Montserrat',sans-serif; padding:52px 24px 60px;
+    font-family:'Montserrat',sans-serif; padding:40px 24px 60px;
     position:relative; overflow:hidden;
   }
   .glow {
@@ -23,16 +24,28 @@ const css = `
     transition:opacity .8s ease, transform .8s ease;
   }
   .wrap.in { opacity:1; transform:translateY(0); }
+
+  /* Back button */
+  .back-btn {
+    align-self:flex-start; background:none; border:none;
+    color:rgba(201,150,12,.6); font-family:'Montserrat',sans-serif;
+    font-size:11px; font-weight:600; letter-spacing:2px;
+    cursor:pointer; display:flex; align-items:center; gap:6px;
+    margin-bottom:28px; padding:0; transition:color .2s;
+  }
+  .back-btn:hover { color:var(--gold); }
+
   .logo { display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:8px; }
   .logo-row { display:flex; align-items:center; gap:12px; }
-  .brand { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--gold); letter-spacing:8px; }
-  .sys   { font-size:9px; font-weight:600; color:var(--w40); letter-spacing:5px; }
+  .brand { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--gold); letter-spacing:8px; line-height:1; }
+  .sys   { font-size:9px; font-weight:600; color:var(--w40); letter-spacing:5px; text-align:center; margin-bottom:8px; }
   .script {
     font-family:'Great Vibes',cursive; font-size:48px; color:#fff;
     text-shadow:0 0 50px rgba(201,150,12,.35); margin-bottom:4px;
   }
-  .tagline { font-size:10px; font-weight:700; color:var(--gold); letter-spacing:4px; margin-bottom:36px; }
-  .divider { width:100%; height:1px; background:linear-gradient(to right,transparent,rgba(201,150,12,.3),transparent); margin-bottom:36px; }
+  .tagline { font-size:10px; font-weight:700; color:var(--gold); letter-spacing:4px; margin-bottom:32px; }
+  .divider { width:100%; height:1px; background:linear-gradient(to right,transparent,rgba(201,150,12,.3),transparent); margin-bottom:32px; }
+
   .links { width:100%; display:flex; flex-direction:column; gap:12px; margin-bottom:36px; }
   .link-btn {
     display:flex; align-items:center; gap:16px; width:100%; padding:16px 20px;
@@ -60,24 +73,27 @@ const css = `
   .link-label { font-size:12px; font-weight:700; letter-spacing:1.5px; }
   .link-desc  { font-size:10px; color:var(--w40); letter-spacing:.5px; }
   .link-arr   { font-size:14px; color:var(--gold); opacity:.6; }
+  .link-btn.primary .link-arr { color:#040404; opacity:.6; }
+
   .footer { display:flex; flex-direction:column; align-items:center; gap:8px; }
-  .footer-copy { font-size:10px; color:rgba(255,255,255,.2); letter-spacing:1px; text-align:center; }
   .footer-ig   { font-size:11px; color:rgba(201,150,12,.55); letter-spacing:1px; }
+  .footer-copy { font-size:10px; color:rgba(255,255,255,.2); letter-spacing:1px; text-align:center; }
 `;
 
-const LINKS = [
-  { icon:"💳", label:"GET THE PROGRAM",    desc:"Start your 28-day transformation",  href:"https://www.aurevatrainingsystem.com/pricing", primary:true },
-  { icon:"🌐", label:"VISIT WEBSITE",      desc:"aurevatrainingsystem.com",           href:"https://www.aurevatrainingsystem.com" },
-  { icon:"📱", label:"DOWNLOAD iOS APP",   desc:"Available on the App Store",         href:"https://apps.apple.com" },
-  { icon:"🤖", label:"DOWNLOAD ANDROID",   desc:"Available on Google Play",           href:"https://play.google.com" },
-  { icon:"📸", label:"@AUREVAFITNESS",     desc:"Follow us on Instagram",             href:"https://www.instagram.com/AurevaFitness" },
-  { icon:"📘", label:"FACEBOOK",           desc:"Aureva Training System",             href:"https://www.facebook.com/AurevaTrainingSystem" },
-  { icon:"👩", label:"ABOUT MIA",          desc:"Hi, I'm Mia — meet your coach",     href:"https://www.aurevatrainingsystem.com/about" },
-];
-
 export default function Start() {
+  const navigate = useNavigate();
   const [ready, setReady] = useState(false);
   useEffect(() => { const t = setTimeout(() => setReady(true), 80); return () => clearTimeout(t); }, []);
+
+  const LINKS = [
+    { icon:"💳", label:"GET THE PROGRAM",    desc:"Start your 28-day transformation",  to:"/pricing",   primary:true,  external:false },
+    { icon:"🔐", label:"LOG IN",             desc:"Access your account",               to:"/",          primary:false, external:false },
+    { icon:"📱", label:"DOWNLOAD iOS APP",   desc:"Available on the App Store",         href:"https://apps.apple.com", external:true },
+    { icon:"🤖", label:"DOWNLOAD ANDROID",   desc:"Available on Google Play",           href:"https://play.google.com", external:true },
+    { icon:"📸", label:"@AUREVAFITNESS",     desc:"Follow us on Instagram",             href:"https://www.instagram.com/AurevaFitness", external:true },
+    { icon:"📘", label:"FACEBOOK",           desc:"Aureva Training System",             href:"https://www.facebook.com/AurevaTrainingSystem", external:true },
+    { icon:"👩", label:"ABOUT MIA",          desc:"Hi, I'm Mia — meet your coach",     to:"/about",     primary:false, external:false },
+  ];
 
   return (
     <>
@@ -88,6 +104,12 @@ export default function Start() {
       <div className="page">
         <div className="glow"/>
         <div className={`wrap${ready ? " in" : ""}`}>
+
+          {/* Back button */}
+          <button className="back-btn" onClick={() => navigate(-1)}>
+            ← BACK
+          </button>
+
           <div className="logo">
             <div className="logo-row">
               <svg width="36" height="32" viewBox="0 0 44 40" fill="none">
@@ -99,22 +121,38 @@ export default function Start() {
             </div>
             <span className="sys">TRAINING SYSTEM</span>
           </div>
+
           <p className="script">Become Her.</p>
           <p className="tagline">DISCIPLINE · STRENGTH · CONFIDENCE</p>
           <div className="divider"/>
+
           <div className="links">
             {LINKS.map((l) => (
-              <a key={l.label} href={l.href} target="_blank" rel="noreferrer"
-                className={`link-btn${l.primary ? " primary" : ""}`}>
-                <span className="link-icon">{l.icon}</span>
-                <div className="link-text">
-                  <span className="link-label">{l.label}</span>
-                  <span className="link-desc">{l.desc}</span>
-                </div>
-                <span className="link-arr">›</span>
-              </a>
+              l.external ? (
+                <a key={l.label} href={l.href} target="_blank" rel="noreferrer"
+                  className={`link-btn${l.primary ? " primary" : ""}`}>
+                  <span className="link-icon">{l.icon}</span>
+                  <div className="link-text">
+                    <span className="link-label">{l.label}</span>
+                    <span className="link-desc">{l.desc}</span>
+                  </div>
+                  <span className="link-arr">›</span>
+                </a>
+              ) : (
+                <button key={l.label}
+                  className={`link-btn${l.primary ? " primary" : ""}`}
+                  onClick={() => navigate(l.to)}>
+                  <span className="link-icon">{l.icon}</span>
+                  <div className="link-text">
+                    <span className="link-label">{l.label}</span>
+                    <span className="link-desc">{l.desc}</span>
+                  </div>
+                  <span className="link-arr">›</span>
+                </button>
+              )
             ))}
           </div>
+
           <div className="footer">
             <p className="footer-ig">📸 @AurevaFitness</p>
             <p className="footer-copy">© 2026 Aureva Fitness · All Rights Reserved</p>
