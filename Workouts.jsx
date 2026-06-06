@@ -98,6 +98,12 @@ const css = `
   .ex-table td:not(:first-child) { text-align:center; color:var(--w50); font-size:11px; }
   .ex-table tr:hover td { background:rgba(201,150,12,.03); }
   .ex-name { font-weight:600; color:#fff; }
+  /* Warm-up list */
+  .warmup-list { list-style:none; padding:0; margin:0; }
+  .warmup-item { font-size:12px; color:var(--w70); padding:7px 0; border-bottom:1px solid rgba(255,255,255,.04); display:flex; align-items:center; gap:10px; }
+  .warmup-item:last-child { border-bottom:none; }
+  .warmup-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+
   .info-2col { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
   .info-box { background:rgba(201,150,12,.05); border:1px solid rgba(201,150,12,.12); padding:14px; }
   .info-box-title { font-size:9px; font-weight:800; color:var(--gold); letter-spacing:2.5px; margin-bottom:6px; }
@@ -170,6 +176,21 @@ function WorkoutModal({ day, onClose }) {
 
         {/* Body */}
         <div className="wk-body">
+
+          {/* Warm-Up */}
+          {day.warmup && (
+            <div className="wk-section">
+              <p className="wk-sec-title">⚡ WARM-UP — 5–10 MIN</p>
+              <ul className="warmup-list">
+                {day.warmup.map((item, i) => (
+                  <li key={i} className="warmup-item">
+                    <span className="warmup-dot"/>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Main workout */}
           <div className="wk-section">

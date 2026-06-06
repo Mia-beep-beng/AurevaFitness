@@ -3,6 +3,7 @@
 export const WORKOUTS = {
   1: {
     day:1, focus:"LOWER BODY STRENGTH",
+    warmup:["5 min treadmill walk","Hip circles x 10","Bodyweight squats x 15","Banded lateral walks x 15/side"],
     exercises:[
       {name:"Hip Thrust",             sets:4, reps:"6–8",       rest:"90 sec"},
       {name:"Seated Leg Curl",         sets:3, reps:"10–12",     rest:"90 sec"},
@@ -22,6 +23,7 @@ export const WORKOUTS = {
   },
   2: {
     day:2, focus:"UPPER BODY STRENGTH",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Band pull-aparts x 20","Scapular push-ups x 10"],
     exercises:[
       {name:"Dumbbell Bench Press",    sets:4, reps:"6–8",       rest:"90 sec"},
       {name:"Lat Pulldown",            sets:3, reps:"8–10",      rest:"90 sec"},
@@ -43,6 +45,7 @@ export const WORKOUTS = {
   },
   3: {
     day:3, focus:"PUSH DAY — CHEST, SHOULDERS, TRICEPS",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Band pull-aparts x 20","Shoulder taps x 20","Push-up to down dog x 10"],
     exercises:[
       {name:"Barbell Bench Press",     sets:4, reps:"6–8",   rest:"90 sec"},
       {name:"Incline Dumbbell Press",  sets:3, reps:"8–10",  rest:"90 sec"},
@@ -64,6 +67,7 @@ export const WORKOUTS = {
   },
   4: {
     day:4, focus:"PULL DAY — BACK, BICEPS, REAR DELTS",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Band pull-aparts x 20","Scapular retractions x 15","Light lat pulldown x 15"],
     exercises:[
       {name:"Pull-Ups / Assisted Pull-Ups", sets:4, reps:"6–10",      rest:"90 sec"},
       {name:"Bent Over Barbell Row",         sets:4, reps:"6–10",      rest:"90 sec"},
@@ -85,6 +89,7 @@ export const WORKOUTS = {
   },
   5: {
     day:5, focus:"GLUTES & HAMSTRINGS",
+    warmup:["5 min treadmill walk","Leg swings x 15 fwd / x 15 back","Hip circles x 10 each direction","Bodyweight squats x 15","Glute bridges x 15"],
     exercises:[
       {name:"Hip Thrust",         sets:4, reps:"6–10",      rest:"90 sec"},
       {name:"Romanian Deadlift",  sets:4, reps:"8–10",      rest:"90 sec"},
@@ -106,6 +111,7 @@ export const WORKOUTS = {
   },
   6: {
     day:6, focus:"CONDITIONING & CORE",
+    warmup:["5 min light cardio (jog or bike)","Arm circles x 15 fwd / x 15 back","Leg swings x 15 each leg","Bodyweight squats x 15","High knees x 30 sec"],
     exercises:[
       {name:"Kettlebell Swings",  sets:4, reps:"15–20",   rest:"45 sec"},
       {name:"Battle Rope Slams",  sets:4, reps:"30 sec",  rest:"45 sec"},
@@ -127,6 +133,7 @@ export const WORKOUTS = {
   },
   7: {
     day:7, focus:"RECOVERY & MOBILITY",
+    warmup:["5 min brisk walk","Arm circles x 15 fwd / x 15 back","Hip circles x 10 each direction","Leg swings x 15 each leg","Bodyweight squats x 15","Cat-cow stretch x 10"],
     exercises:[
       {name:"Foam Rolling Full Body",     sets:1, reps:"5–10 min", rest:"—"},
       {name:"Dynamic Hip Opener",         sets:3, reps:"10/side",  rest:"30 sec"},
@@ -148,6 +155,7 @@ export const WORKOUTS = {
   },
   8: {
     day:8, focus:"FULL BODY STRENGTH",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Hip circles x 10 each direction","Bodyweight squats x 15","Leg swings x 15 each leg","Shoulder taps x 20"],
     exercises:[
       {name:"Goblet Squat",      sets:4, reps:"8–12",      rest:"90 sec"},
       {name:"Dumbbell Bench Press",sets:4,reps:"8–12",      rest:"90 sec"},
@@ -169,6 +177,7 @@ export const WORKOUTS = {
   },
   9: {
     day:9, focus:"TOTAL BODY POWER",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Bodyweight squats x 15","Hip circles x 10 each direction","High knees x 30 sec","Leg swings x 15 each leg"],
     exercises:[
       {name:"Kettlebell Swings",  sets:4, reps:"15–20",   rest:"45 sec"},
       {name:"Push Press",         sets:4, reps:"8–10",    rest:"90 sec"},
@@ -190,6 +199,7 @@ export const WORKOUTS = {
   },
   10: {
     day:10, focus:"LOWER BODY STRENGTH",
+    warmup:["5 min treadmill walk or bike","Hip circles x 15 each direction","Leg swings x 15 each leg","Bodyweight squats x 15","Glute bridges x 15"],
     exercises:[
       {name:"Back Squat",               sets:4, reps:"6–10",      rest:"90 sec"},
       {name:"Romanian Deadlift",         sets:4, reps:"8–12",      rest:"90 sec"},
@@ -210,6 +220,7 @@ export const WORKOUTS = {
   },
   11: {
     day:11, focus:"UPPER BODY STRENGTH",
+    warmup:["5 min treadmill walk or bike","Arm circles x 15 fwd / x 15 back","Band pull-aparts x 15","Shoulder taps x 20","Scapular push-ups x 15"],
     exercises:[
       {name:"Barbell Bench Press",    sets:4, reps:"6–10",       rest:"90 sec"},
       {name:"Seated Dumbbell Press",  sets:4, reps:"8–12",       rest:"90 sec"},
@@ -231,6 +242,7 @@ export const WORKOUTS = {
   },
   12: {
     day:12, focus:"GLUTES & HAMSTRINGS",
+    warmup:["5 min treadmill walk or bike","Hip circles x 15 each direction","Leg swings x 15 each leg","Bodyweight squats x 15","Glute bridges x 15"],
     exercises:[
       {name:"Hip Thrust",               sets:4, reps:"8–12",       rest:"90 sec"},
       {name:"Romanian Deadlift",         sets:4, reps:"8–12",       rest:"90 sec"},
@@ -251,6 +263,7 @@ export const WORKOUTS = {
   },
   13: {
     day:13, focus:"CONDITIONING & CORE",
+    warmup:["5 min light jog or jump rope","Arm circles x 15 fwd / x 15 back","Hip circles x 15 each direction","Bodyweight squats x 15","High knees x 30 sec"],
     exercises:[
       {name:"Battle Rope Slams",  sets:4, reps:"30 sec",  rest:"30 sec"},
       {name:"Jump Squats",        sets:4, reps:"15",      rest:"30 sec"},
@@ -272,6 +285,7 @@ export const WORKOUTS = {
   },
   14: {
     day:14, focus:"RECOVERY & MOBILITY",
+    warmup:["5 min brisk walk or easy bike","Arm circles x 15 each direction","Hip circles x 15 each direction","Cat-Cow x 10","Deep squat hold x 30 sec"],
     exercises:[
       {name:"World's Greatest Stretch",sets:3, reps:"6/side",        rest:"15–30 sec"},
       {name:"Hip Flexor Stretch",       sets:3, reps:"30 sec/side",  rest:"15–30 sec"},
@@ -292,6 +306,7 @@ export const WORKOUTS = {
   },
   15: {
     day:15, focus:"FULL BODY STRENGTH",
+    warmup:["5 min treadmill walk or bike","Arm circles x 15 fwd / x 15 back","Hip circles x 15 each direction","Leg swings x 15 each leg","Bodyweight squats x 15"],
     exercises:[
       {name:"Goblet Squat",      sets:4, reps:"8–12",     rest:"90 sec"},
       {name:"Push Press",        sets:4, reps:"8–10",     rest:"90 sec"},
@@ -313,6 +328,7 @@ export const WORKOUTS = {
   },
   16: {
     day:16, focus:"PULL & CORE STRENGTH",
+    warmup:["5 min treadmill walk or bike","Arm circles x 15 fwd / x 15 back","Band pull-aparts x 15","Scapular pull-ups x 10","Hip circles x 15 each direction"],
     exercises:[
       {name:"Pull-Ups",               sets:4, reps:"6–10",      rest:"90 sec"},
       {name:"Bent Over Barbell Row",   sets:4, reps:"8–12",      rest:"90 sec"},
@@ -334,6 +350,7 @@ export const WORKOUTS = {
   },
   17: {
     day:17, focus:"LOWER BODY POWER",
+    warmup:["5 min brisk walk or bike","Leg swings x 15 each","Hip circles x 15 each direction","Bodyweight squats x 15","Calf raises x 20"],
     exercises:[
       {name:"Back Squat",           sets:4, reps:"4–6",      rest:"2 min"},
       {name:"Romanian Deadlift",     sets:4, reps:"6–8",      rest:"90 sec"},
@@ -355,6 +372,7 @@ export const WORKOUTS = {
   },
   18: {
     day:18, focus:"UPPER BODY HYPERTROPHY",
+    warmup:["5 min treadmill walk or bike","Arm circles x 15 fwd / x 15 back","Shoulder dislocates x 15","Scapular push-ups x 10","Band pull-aparts x 15"],
     exercises:[
       {name:"Barbell Bench Press",   sets:4, reps:"8–12",  rest:"90 sec"},
       {name:"Pull-Ups or Lat Pulldown",sets:4,reps:"8–12", rest:"90 sec"},
@@ -376,6 +394,7 @@ export const WORKOUTS = {
   },
   19: {
     day:19, focus:"GLUTES & HAMSTRINGS ADVANCED",
+    warmup:["5 min treadmill walk or bike","Hip circles x 15 each direction","Bodyweight squats x 15","Leg swings x 15 each leg","Glute bridges x 20"],
     exercises:[
       {name:"Barbell Hip Thrust",  sets:4, reps:"8–12",      rest:"90 sec"},
       {name:"Romanian Deadlift",   sets:4, reps:"6–10",      rest:"90 sec"},
@@ -397,6 +416,7 @@ export const WORKOUTS = {
   },
   20: {
     day:20, focus:"CONDITIONING & CORE ADVANCED",
+    warmup:["5 min treadmill walk or bike","Arm circles x 15 fwd / x 15 back","Leg swings x 15 each leg","Hip circles x 15 each direction","Bodyweight squats x 15"],
     exercises:[
       {name:"Battle Rope Slams",    sets:4, reps:"30 sec",  rest:"30 sec"},
       {name:"Sled Push",            sets:4, reps:"30 m",    rest:"30 sec"},
@@ -418,6 +438,7 @@ export const WORKOUTS = {
   },
   21: {
     day:21, focus:"RECOVERY & MOBILITY TRAINING",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Leg swings x 15 each leg","Hip circles x 15 each direction","Bodyweight squats x 15"],
     exercises:[
       {name:"World's Greatest Stretch",sets:3, reps:"8/side",        rest:"30 sec"},
       {name:"Deep Lunge Reach",         sets:3, reps:"10/side",       rest:"30 sec"},
@@ -439,6 +460,7 @@ export const WORKOUTS = {
   },
   22: {
     day:22, focus:"PUSH POWER & UPPER BODY STRENGTH",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Shoulder rolls x 15 each direction","Band pull-aparts x 15","Push-ups x 10"],
     exercises:[
       {name:"Barbell Bench Press",   sets:4, reps:"6–10",  rest:"60 sec"},
       {name:"Incline Dumbbell Press",sets:4, reps:"8–12",  rest:"60 sec"},
@@ -460,6 +482,7 @@ export const WORKOUTS = {
   },
   23: {
     day:23, focus:"LEGS & GLUTES STRENGTH",
+    warmup:["5 min treadmill walk","Leg swings x 15 each leg","Bodyweight squats x 15","Glute bridges x 15","Ankle circles x 15 each direction"],
     exercises:[
       {name:"Barbell Back Squat",  sets:4, reps:"8–12",      rest:"90 sec"},
       {name:"Romanian Deadlift",   sets:4, reps:"8–12",      rest:"90 sec"},
@@ -481,6 +504,7 @@ export const WORKOUTS = {
   },
   24: {
     day:24, focus:"PUSH, PULL & CORE POWER",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Leg swings x 15 each leg","Hip circles x 15 each direction","Bodyweight squats x 15"],
     exercises:[
       {name:"Push-Up",              sets:4, reps:"8–12",  rest:"60 sec"},
       {name:"Bent Over Row",        sets:4, reps:"8–12",  rest:"60 sec"},
@@ -502,6 +526,7 @@ export const WORKOUTS = {
   },
   25: {
     day:25, focus:"TOTAL BODY STRENGTH",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Leg swings x 15 each leg","Hip circles x 15 each direction","Bodyweight squats x 15"],
     exercises:[
       {name:"Goblet Squat",         sets:4, reps:"10–15",   rest:"60 sec"},
       {name:"Push-Up",              sets:4, reps:"8–15",    rest:"60 sec"},
@@ -523,6 +548,7 @@ export const WORKOUTS = {
   },
   26: {
     day:26, focus:"BACK & BICEPS STRENGTH",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Band pull-aparts x 15","Cat-Cow x 10","Scapular retractions x 15"],
     exercises:[
       {name:"Pull-Ups (or Assisted)", sets:4, reps:"6–10",      rest:"90 sec"},
       {name:"Lat Pulldown (Wide Grip)",sets:4, reps:"8–12",     rest:"75 sec"},
@@ -544,6 +570,7 @@ export const WORKOUTS = {
   },
   27: {
     day:27, focus:"SHOULDERS & TRAPS STRENGTH",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Shoulder rolls x 15 each direction","Band pull-aparts x 15","Cat-Cow x 10","Scapular retractions x 15"],
     exercises:[
       {name:"Overhead Press",    sets:4, reps:"6–10",  rest:"90 sec"},
       {name:"Lateral Raise",     sets:4, reps:"8–12",  rest:"60 sec"},
@@ -565,6 +592,7 @@ export const WORKOUTS = {
   },
   28: {
     day:28, focus:"PEAK PERFORMANCE DAY — COMPLETE 4 ROUNDS",
+    warmup:["5 min treadmill walk","Arm circles x 15 fwd / x 15 back","Leg swings x 15 each leg","Hip circles x 15 each direction","Bodyweight squats x 15"],
     exercises:[
       {name:"Push-Up",               sets:4, reps:"15–20",  rest:"45 sec"},
       {name:"Pull-Up / Lat Pulldown", sets:4, reps:"8–12",   rest:"45 sec"},
