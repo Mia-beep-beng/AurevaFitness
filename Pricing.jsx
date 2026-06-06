@@ -177,6 +177,9 @@ const css = `
     transition:opacity .75s ease, transform .75s ease;
   }
   .pay-wrap.in { opacity:1; transform:translateY(0); }
+
+  .pg-back { background:none; border:none; color:rgba(201,150,12,.6); font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; cursor:pointer; display:flex; align-items:center; gap:6px; padding:0; margin-bottom:16px; align-self:flex-start; transition:color .2s; }
+  .pg-back:hover { color:var(--gold); }
   .back-btn {
     align-self:flex-start; background:none; border:none; color:var(--w40);
     font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px;
@@ -341,6 +344,7 @@ export default function Pricing() {
       <div className="pg-page">
         <Bg particles={PARTICLES}/>
         <div className={`pg-content${cl}`}>
+          <button className="pg-back" onClick={() => navigate(-1)}>← BACK</button>
           <AurevaLogo/>
           <h1 className="pg-title">CHOOSE YOUR PLAN</h1>
           <p className="pg-desc">Discipline builds results. Pick your commitment.</p>
