@@ -93,6 +93,7 @@ export default function Start() {
     { icon:"📸", label:"@AUREVAFITNESS",     desc:"Follow us on Instagram",             href:"https://www.instagram.com/AurevaFitness", external:true },
     { icon:"📘", label:"FACEBOOK",           desc:"Aureva Training System",             href:"https://www.facebook.com/AurevaTrainingSystem", external:true },
     { icon:"🥗", label:"NUTRITION & MEAL PLAN", desc:"Macros calculator + 28-day meals", to:"/nutrition", primary:false, external:false },
+    { icon:"🏋", label:"28-DAY WORKOUTS", desc:"All workout days & exercises", to:"/workouts", primary:false, external:false },
     { icon:"👩", label:"ABOUT MIA",          desc:"Hi, I'm Mia — meet your coach",     to:"/about",     primary:false, external:false },
   ];
 

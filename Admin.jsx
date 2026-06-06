@@ -88,6 +88,7 @@ const PAGES = [
   { icon:'🔗', name:'START / QR',   desc:'QR code hub',           to:'/start' },
   { icon:'📱', name:'APP PREVIEW',  desc:'Mobile app demo',        to:'/app-demo' },
   { icon:'🥗', name:'NUTRITION',    desc:'Macros calc + meal plan',  to:'/nutrition' },
+  { icon:'🏋', name:'WORKOUTS',     desc:'All 28 training days',      to:'/workouts' },
 ]
 
 export default function Admin() {

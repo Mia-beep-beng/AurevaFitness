@@ -7,6 +7,7 @@ import About      from './About.jsx'
 import Start      from './Start.jsx'
 import Admin      from './Admin.jsx'
 import Nutrition  from './Nutrition.jsx'
+import Workouts   from './Workouts.jsx'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/start"      element={<Start />} />
         <Route path="/admin"      element={<Admin />} />
         <Route path="/nutrition"  element={<Nutrition />} />
+        <Route path="/workouts"  element={<Workouts />} />
         <Route path="*"           element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
