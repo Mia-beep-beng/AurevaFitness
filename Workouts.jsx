@@ -72,52 +72,31 @@ const css = `
   .day-badge { position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,.75); border:1px solid rgba(201,150,12,.3); padding:3px 6px; font-size:8px; font-weight:700; color:var(--gold); letter-spacing:1px; }
 
   /* ── MODAL ── */
-  .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.88); display:flex; align-items:flex-start; justify-content:center; z-index:200; padding:16px; overflow-y:auto; backdrop-filter:blur(6px); }
-  .wk-modal { background:#0a0a0a; border:1px solid rgba(201,150,12,.22); width:100%; max-width:760px; margin:auto; position:relative; overflow:hidden; }
+  /* Modal — image only, scrollable */
+  .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.9); display:flex; align-items:flex-start; justify-content:center; z-index:200; padding:16px; overflow-y:auto; backdrop-filter:blur(6px); }
+  .wk-modal { width:min(640px,96vw); background:#060606; margin:auto; display:flex; flex-direction:column; }
 
-  /* Modal hero */
-  .wk-hero { position:relative; overflow:hidden; }
-  .wk-hero img { width:100%; display:block; max-height:420px; object-fit:cover; object-position:left top; }
-  .wk-hero-fallback { height:200px; display:flex; align-items:center; justify-content:center; }
-  .wk-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,.4) 50%, transparent 100%); }
-  .wk-close { position:absolute; top:14px; right:14px; background:rgba(0,0,0,.9); border:1.5px solid var(--gold); color:var(--gold); font-family:'Montserrat',sans-serif; font-size:11px; font-weight:800; letter-spacing:2px; padding:9px 16px; cursor:pointer; transition:all .2s; z-index:10; }
-  .wk-close:hover { background:var(--gold); color:#060606; }
-  .wk-hero-info { position:absolute; bottom:0; left:0; right:0; padding:20px 24px; }
-  .wk-day-label { font-size:11px; font-weight:700; color:var(--gold); letter-spacing:4px; margin-bottom:4px; }
-  .wk-day-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(24px,4vw,36px); color:#fff; letter-spacing:2px; line-height:1; }
-  .wk-day-goal  { font-size:11px; font-weight:300; color:var(--w50); margin-top:4px; font-style:italic; }
-
-  /* Modal body */
-  .wk-body { padding:24px; }
-  .wk-section { margin-bottom:24px; }
-  .wk-sec-title { font-size:9.5px; font-weight:800; color:var(--gold); letter-spacing:3px; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid rgba(201,150,12,.15); }
-  .ex-table { width:100%; border-collapse:collapse; }
-  .ex-table th { font-size:8.5px; font-weight:700; color:var(--w35); letter-spacing:2px; text-align:left; padding:6px 10px; border-bottom:1px solid rgba(201,150,12,.12); }
-  .ex-table th:not(:first-child) { text-align:center; }
-  .ex-table td { font-size:12px; color:var(--w70); padding:9px 10px; border-bottom:1px solid rgba(255,255,255,.04); }
-  .ex-table td:not(:first-child) { text-align:center; color:var(--w50); font-size:11px; }
-  .ex-table tr:hover td { background:rgba(201,150,12,.03); }
-  .ex-name { font-weight:600; color:#fff; }
-  /* Warm-up list */
-  .warmup-list { list-style:none; padding:0; margin:0; }
-  .warmup-item { font-size:12px; color:var(--w70); padding:7px 0; border-bottom:1px solid rgba(255,255,255,.04); display:flex; align-items:center; gap:10px; }
-  .warmup-item:last-child { border-bottom:none; }
-  .warmup-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; }
-
-  .info-2col { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  .info-box { background:rgba(201,150,12,.05); border:1px solid rgba(201,150,12,.12); padding:14px; }
-  .info-box-title { font-size:9px; font-weight:800; color:var(--gold); letter-spacing:2.5px; margin-bottom:6px; }
-  .info-box-txt { font-size:12px; color:var(--w70); line-height:1.65; }
-  .tempo-big { font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--gold); letter-spacing:6px; }
-
-  @media(max-width:700px) {
-    .days-row { grid-template-columns:repeat(4,1fr); }
-    .info-2col { grid-template-columns:1fr; }
-    .wk-body  { padding:16px; }
+  .wk-close-bar {
+    position:sticky; top:0; z-index:10; background:rgba(6,6,6,.97);
+    border-bottom:1px solid rgba(201,150,12,.2);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 16px; gap:12px;
   }
-  @media(max-width:420px) {
-    .days-row { grid-template-columns:repeat(3,1fr); }
+  .wk-day-label    { font-size:10px; font-weight:700; color:var(--gold); letter-spacing:3px; }
+  .wk-day-title-sm { font-size:11px; font-weight:700; color:#fff; letter-spacing:1px; }
+  .wk-close {
+    background:rgba(201,150,12,.12); border:1px solid rgba(201,150,12,.4);
+    color:var(--gold); font-family:'Montserrat',sans-serif;
+    font-size:10px; font-weight:800; letter-spacing:2px;
+    padding:7px 14px; cursor:pointer; white-space:nowrap; flex-shrink:0;
+    transition:background .2s;
   }
+  .wk-close:hover { background:rgba(201,150,12,.22); }
+  .wk-full-img { width:100%; height:auto; display:block; }
+  .wk-hero-fallback { min-height:400px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; }
+
+  @media(max-width:700px) { .days-row { grid-template-columns:repeat(4,1fr); } }
+  @media(max-width:420px) { .days-row { grid-template-columns:repeat(3,1fr); } }
 `
 
 
@@ -149,113 +128,31 @@ function DayCard({ day, onClick }) {
 }
 
 function WorkoutModal({ day, onClose }) {
-  const t    = getType(day.day)
-  const meta = TYPE_META[t]
+  const t      = getType(day.day)
+  const meta   = TYPE_META[t]
   const imgSrc = WORKOUT_IMAGES[day.day]
 
   return (
     <div className="modal-overlay" onClick={e => { if(e.target===e.currentTarget) onClose() }}>
       <div className="wk-modal">
 
-        {/* Hero */}
-        <div className="wk-hero">
-          {imgSrc
-            ? <img src={imgSrc} alt={`Day ${day.day}`}/>
-            : <div className="wk-hero-fallback" style={{ background: meta.bg }}>
-                <span style={{fontSize:'64px'}}>{meta.icon}</span>
-              </div>
-          }
-          <div className="wk-hero-overlay"/>
+        {/* Sticky header */}
+        <div className="wk-close-bar">
+          <div>
+            <span className="wk-day-label">DAY {day.day} · WEEK {Math.ceil(day.day/7)}</span>
+            <span className="wk-day-title-sm" style={{ color: meta.color }}>  {day.focus}</span>
+          </div>
           <button className="wk-close" onClick={onClose}>✕ CLOSE</button>
-          <div className="wk-hero-info">
-            <p className="wk-day-label">DAY {day.day} · WEEK {Math.ceil(day.day/7)}</p>
-            <p className="wk-day-title" style={{ color: meta.color }}>{day.focus}</p>
-            <p className="wk-day-goal">Tempo: {day.tempo} · {meta.label}</p>
-          </div>
         </div>
 
-        {/* Body */}
-        <div className="wk-body">
-
-          {/* Warm-Up */}
-          {day.warmup && (
-            <div className="wk-section">
-              <p className="wk-sec-title">⚡ WARM-UP — 5–10 MIN</p>
-              <ul className="warmup-list">
-                {day.warmup.map((item, i) => (
-                  <li key={i} className="warmup-item">
-                    <span className="warmup-dot"/>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        {/* Full workout infographic — scroll to read everything */}
+        {imgSrc
+          ? <img src={imgSrc} alt={`Day ${day.day}`} className="wk-full-img"/>
+          : <div className="wk-hero-fallback" style={{ background: meta.bg, minHeight:'400px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'12px' }}>
+              <span style={{fontSize:'72px'}}>{meta.icon}</span>
+              <p style={{color:meta.color,fontFamily:"'Bebas Neue',sans-serif",fontSize:'28px',letterSpacing:'3px'}}>DAY {day.day} · {day.focus}</p>
             </div>
-          )}
-
-          {/* Main workout */}
-          <div className="wk-section">
-            <p className="wk-sec-title">🏋 MAIN WORKOUT</p>
-            <table className="ex-table">
-              <thead>
-                <tr>
-                  <th>#</th><th style={{textAlign:'left'}}>EXERCISE</th>
-                  <th>SETS</th><th>REPS</th><th>REST</th>
-                </tr>
-              </thead>
-              <tbody>
-                {day.exercises.map((ex, i) => (
-                  <tr key={i}>
-                    <td style={{color:'var(--w35)',fontSize:'11px'}}>{i+1}</td>
-                    <td><span className="ex-name">{ex.name}</span></td>
-                    <td>{ex.sets}</td>
-                    <td>{ex.reps}</td>
-                    <td>{ex.rest || '—'}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Core finisher */}
-          <div className="wk-section">
-            <p className="wk-sec-title">🔥 CORE FINISHER</p>
-            <table className="ex-table">
-              <thead>
-                <tr><th style={{textAlign:'left'}}>EXERCISE</th><th>SETS</th><th>REPS / TIME</th></tr>
-              </thead>
-              <tbody>
-                {day.core.map((ex, i) => (
-                  <tr key={i}>
-                    <td><span className="ex-name">{ex.name}</span></td>
-                    <td>{ex.sets || '3'}</td>
-                    <td>{ex.reps}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Info boxes */}
-          <div className="info-2col">
-            <div className="info-box">
-              <p className="info-box-title">🏃 CARDIO FINISHER</p>
-              <p className="info-box-txt">{day.cardio}</p>
-            </div>
-            <div className="info-box">
-              <p className="info-box-title">⏱ TEMPO GUIDE</p>
-              <p className="tempo-big">{day.tempo}</p>
-              <p className="info-box-txt" style={{marginTop:'6px',fontSize:'11px'}}>
-                Control the movement. Quality over speed.
-              </p>
-            </div>
-          </div>
-
-          {day.note && (
-            <div style={{marginTop:'16px',background:'rgba(201,150,12,.08)',border:'1px solid rgba(201,150,12,.25)',padding:'16px',textAlign:'center'}}>
-              <p style={{fontFamily:"'Great Vibes',cursive",fontSize:'22px',color:'var(--gold)'}}>{day.note}</p>
-            </div>
-          )}
-        </div>
+        }
       </div>
     </div>
   )
