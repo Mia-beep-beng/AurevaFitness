@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import whyImg from "./hero-why.jpg";
 
 const css = `
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -78,6 +79,14 @@ const css = `
   .footer { display:flex; flex-direction:column; align-items:center; gap:8px; }
   .footer-ig   { font-size:11px; color:rgba(201,150,12,.55); letter-spacing:1px; }
   .footer-copy { font-size:10px; color:rgba(255,255,255,.2); letter-spacing:1px; text-align:center; }
+
+  .why-card {
+    width:100%; display:block; margin-bottom:28px;
+    border:1px solid rgba(201,150,12,.28);
+    box-shadow:0 0 32px rgba(201,150,12,.08);
+    transition:box-shadow .3s;
+  }
+  .why-card:hover { box-shadow:0 0 48px rgba(201,150,12,.16); }
 `;
 
 export default function Start() {
@@ -127,6 +136,9 @@ export default function Start() {
           <p className="script">Become Her.</p>
           <p className="tagline">DISCIPLINE · STRENGTH · CONFIDENCE</p>
           <div className="divider"/>
+
+          {/* Why Aureva — featured image */}
+          <img src={whyImg} alt="Why Aureva?" className="why-card"/>
 
           <div className="links">
             {LINKS.map((l) => (

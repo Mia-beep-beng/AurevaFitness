@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import heroImg from './hero-login.jpg'
 
 const PARTICLES = Array.from({ length: 28 }, (_, i) => ({
   id: i,
@@ -23,18 +24,12 @@ const css = `
     font-family:'Montserrat',sans-serif;
   }
 
-  /* ══ PHOTO PANEL ══
-     Replace background with your image:
-     background:
-       linear-gradient(to right, rgba(6,6,6,0) 0%, rgba(6,6,6,.65) 72%, #060606 100%),
-       url('YOUR_PHOTO_URL') center / cover no-repeat;
-  ══════════════════ */
+  /* ══ PHOTO PANEL ══ */
   .photo-col {
     flex:1.05; position:relative; overflow:hidden;
     background:
-      linear-gradient(to right, rgba(6,6,6,0) 0%, rgba(6,6,6,.68) 74%, #060606 100%),
-      radial-gradient(ellipse 60% 55% at 50% 45%, rgba(201,130,8,.22) 0%, rgba(160,90,4,.10) 40%, transparent 70%),
-      linear-gradient(160deg, #0d0a02 0%, #1a1100 45%, #060606 100%);
+      linear-gradient(to right, rgba(6,6,6,0) 0%, rgba(6,6,6,.62) 68%, #060606 100%),
+      url(${heroImg}) left top / cover no-repeat;
   }
   .photo-col::before {
     content:''; position:absolute; inset:0; pointer-events:none;
