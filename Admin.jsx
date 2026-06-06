@@ -87,6 +87,7 @@ const PAGES = [
   { icon:'⚖',  name:'DISCLAIMER',  desc:'Health & legal',         to:'/disclaimer' },
   { icon:'🔗', name:'START / QR',   desc:'QR code hub',           to:'/start' },
   { icon:'📱', name:'APP PREVIEW',  desc:'Mobile app demo',        to:'/app-demo' },
+  { icon:'🥗', name:'NUTRITION',    desc:'Macros calc + meal plan',  to:'/nutrition' },
 ]
 
 export default function Admin() {
