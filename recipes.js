@@ -3,7 +3,7 @@
 export const RECIPES = [
   // ── BREAKFAST ──────────────────────────────────────────────────────────────
   {
-    id:1, num:'RECIPE 1', category:'breakfast', img:'/r1.png',
+    id:1, num:'RECIPE 1', category:'breakfast', img:'/r1.jpg',
     name:'PROTEIN BREAKFAST BOWL',
     tag:'High protein. Clean fuel. Perfect start.',
     cal:420, protein:30, carbs:38, fat:12, fiber:6, sugar:12,
@@ -34,7 +34,7 @@ export const RECIPES = [
     },
   },
   {
-    id:2, num:'RECIPE 2', category:'breakfast', img:'/r2.png',
+    id:2, num:'RECIPE 2', category:'breakfast', img:'/r2.jpg',
     name:'EGG WHITE SCRAMBLE',
     tag:'Light, protein-packed, and delicious.',
     cal:310, protein:35, carbs:10, fat:10, fiber:3, sugar:4,
@@ -67,7 +67,7 @@ export const RECIPES = [
     },
   },
   {
-    id:3, num:'RECIPE 3', category:'breakfast', img:'/r3.png',
+    id:3, num:'RECIPE 3', category:'breakfast', img:'/r3.jpg',
     name:'GREEK YOGURT POWER BOWL',
     tag:'Simple. Nutritious. Absolutely delicious.',
     cal:360, protein:25, carbs:38, fat:10, fiber:6, sugar:18,
@@ -97,7 +97,7 @@ export const RECIPES = [
     },
   },
   {
-    id:4, num:'RECIPE 23', category:'breakfast', img:'/r4.png',
+    id:4, num:'RECIPE 23', category:'breakfast', img:'/r4.jpg',
     name:'AUREVA BREAKFAST BURRITO',
     tag:'Fuel Your Morning. Power Your Day.',
     cal:470, protein:38, carbs:42, fat:17, fiber:6, sugar:4,
@@ -137,7 +137,7 @@ export const RECIPES = [
 
   // ── BOWLS ──────────────────────────────────────────────────────────────────
   {
-    id:5, num:'RECIPE 4', category:'bowls', img:'/r5.png',
+    id:5, num:'RECIPE 4', category:'bowls', img:'/r5.jpg',
     name:'GRILLED CHICKEN POWER PLATE',
     tag:'Lean. Clean. Strong.',
     cal:430, protein:40, carbs:40, fat:9, fiber:6, sugar:4,
@@ -169,7 +169,7 @@ export const RECIPES = [
     },
   },
   {
-    id:6, num:'RECIPE 5', category:'bowls', img:'/r6.png',
+    id:6, num:'RECIPE 5', category:'bowls', img:'/r6.jpg',
     name:'TURKEY & SWEET POTATO POWER BOWL',
     tag:'Clean ingredients. Big results.',
     cal:450, protein:35, carbs:42, fat:12, fiber:7, sugar:6,
@@ -204,7 +204,7 @@ export const RECIPES = [
     },
   },
   {
-    id:7, num:'RECIPE 6', category:'bowls', img:'/r7.png',
+    id:7, num:'RECIPE 6', category:'bowls', img:'/r7.jpg',
     name:'LEAN BEEF & RICE POWER BOWL',
     tag:'Simple. Filling. Built for results.',
     cal:470, protein:35, carbs:45, fat:12, fiber:6, sugar:5,
@@ -238,7 +238,7 @@ export const RECIPES = [
     },
   },
   {
-    id:8, num:'RECIPE 14', category:'bowls', img:'/r8.png',
+    id:8, num:'RECIPE 14', category:'bowls', img:'/r8.jpg',
     name:'CHICKEN & QUINOA POWER BOWL',
     tag:'Balanced. Delicious. Built for results.',
     cal:470, protein:35, carbs:42, fat:14, fiber:8, sugar:4,
@@ -278,7 +278,7 @@ export const RECIPES = [
     },
   },
   {
-    id:9, num:'RECIPE 11', category:'bowls', img:'/r9.png',
+    id:9, num:'RECIPE 11', category:'bowls', img:'/r9.jpg',
     name:'TURKEY & SWEET POTATO POWER BOWL',
     tag:'Wholesome ingredients. Powerful you.',
     cal:490, protein:34, carbs:46, fat:14, fiber:8, sugar:6,
@@ -318,7 +318,7 @@ export const RECIPES = [
     },
   },
   {
-    id:10, num:'RECIPE 17', category:'bowls', img:'/r10.png',
+    id:10, num:'RECIPE 17', category:'bowls', img:'/r10.jpg',
     name:'COSTA RICAN CHICKEN BOWL',
     tag:'Bold flavors. Clean ingredients. Real results.',
     cal:440, protein:33, carbs:42, fat:12, fiber:8, sugar:5,
@@ -356,7 +356,7 @@ export const RECIPES = [
     },
   },
   {
-    id:11, num:'RECIPE 16', category:'bowls', img:'/r11.png',
+    id:11, num:'RECIPE 16', category:'bowls', img:'/r11.jpg',
     name:'TOFU & BROWN RICE POWER BOWL',
     tag:'Plant-powered. Protein-packed. Purpose-fueled.',
     cal:390, protein:28, carbs:49, fat:14, fiber:7, sugar:6,
@@ -393,7 +393,7 @@ export const RECIPES = [
     },
   },
   {
-    id:12, num:'RECIPE 18', category:'bowls', img:'/r12.png',
+    id:12, num:'RECIPE 18', category:'bowls', img:'/r12.jpg',
     name:'CASADO CON CARNE AUREVA',
     tag:'Traditional Costa Rican Comfort Food. High Protein Edition.',
     cal:520, protein:42, carbs:45, fat:18, fiber:10, sugar:0,
@@ -424,7 +424,7 @@ export const RECIPES = [
 
   // ── FISH & SEAFOOD ─────────────────────────────────────────────────────────
   {
-    id:13, num:'RECIPE 7', category:'fish', img:'/r13.png',
+    id:13, num:'RECIPE 7', category:'fish', img:'/r13.jpg',
     name:'SALMON & ASPARAGUS POWER PLATE',
     tag:'Simple. Clean. Premium fuel.',
     cal:460, protein:40, carbs:35, fat:16, fiber:6, sugar:3,
@@ -458,7 +458,7 @@ export const RECIPES = [
     },
   },
   {
-    id:14, num:'RECIPE 13', category:'fish', img:'/r14.png',
+    id:14, num:'RECIPE 13', category:'fish', img:'/r14.jpg',
     name:'SALMON & ASPARAGUS POWER PLATE',
     tag:'Clean energy. Healthy fats. Peak performance.',
     cal:430, protein:36, carbs:12, fat:24, fiber:4, sugar:3,
@@ -494,7 +494,7 @@ export const RECIPES = [
     },
   },
   {
-    id:15, num:'RECIPE 20', category:'fish', img:'/r15.png',
+    id:15, num:'RECIPE 20', category:'fish', img:'/r15.jpg',
     name:'SALMON & ASPARAGUS POWER PLATE',
     tag:'Clean protein. Healthy fats. Maximum results.',
     cal:450, protein:40, carbs:28, fat:20, fiber:6, sugar:3,
@@ -532,7 +532,7 @@ export const RECIPES = [
     },
   },
   {
-    id:16, num:'RECIPE 15', category:'fish', img:'/r16.png',
+    id:16, num:'RECIPE 15', category:'fish', img:'/r16.jpg',
     name:'SHRIMP & VEGGIE POWER SKILLET',
     tag:'Simple ingredients. Big nutrition. Real results.',
     cal:340, protein:32, carbs:18, fat:12, fiber:5, sugar:5,
@@ -575,7 +575,7 @@ export const RECIPES = [
 
   // ── STIR-FRIES ─────────────────────────────────────────────────────────────
   {
-    id:17, num:'RECIPE 12', category:'stirfry', img:'/r17.png',
+    id:17, num:'RECIPE 12', category:'stirfry', img:'/r17.jpg',
     name:'BEEF & BROCCOLI POWER STIR-FRY',
     tag:'Bold flavors. Lean protein. Maximum fuel.',
     cal:420, protein:32, carbs:28, fat:16, fiber:6, sugar:8,
@@ -610,7 +610,7 @@ export const RECIPES = [
     },
   },
   {
-    id:18, num:'RECIPE 19', category:'stirfry', img:'/r18.png',
+    id:18, num:'RECIPE 19', category:'stirfry', img:'/r18.jpg',
     name:'LEAN BEEF & VEGGIE STIR-FRY',
     tag:'High protein. Big flavor. Real results.',
     cal:390, protein:36, carbs:30, fat:13, fiber:6, sugar:6,
@@ -653,7 +653,7 @@ export const RECIPES = [
 
   // ── POWER PLATES ───────────────────────────────────────────────────────────
   {
-    id:19, num:'RECIPE 18', category:'plates', img:'/r19.png',
+    id:19, num:'RECIPE 18', category:'plates', img:'/r19.jpg',
     name:'STEAK & SWEET POTATO POWER PLATE',
     tag:'High protein. Complex carbs. Maximum performance.',
     cal:520, protein:40, carbs:45, fat:16, fiber:7, sugar:6,
@@ -684,7 +684,7 @@ export const RECIPES = [
     },
   },
   {
-    id:20, num:'RECIPE 10', category:'plates', img:'/r20.png',
+    id:20, num:'RECIPE 10', category:'plates', img:'/r20.jpg',
     name:'EGG WHITE & SPINACH POWER SCRAMBLE',
     tag:'Light. Protein-packed. Start strong.',
     cal:310, protein:30, carbs:12, fat:12, fiber:4, sugar:4,
@@ -720,7 +720,7 @@ export const RECIPES = [
 
   // ── WRAPS ──────────────────────────────────────────────────────────────────
   {
-    id:21, num:'RECIPE 19', category:'wraps', img:'/r21.png',
+    id:21, num:'RECIPE 19', category:'wraps', img:'/r21.jpg',
     name:'HIGH PROTEIN WRAP',
     tag:'Quick. Portable. Delicious. Results.',
     cal:420, protein:35, carbs:34, fat:14, fiber:8, sugar:4,
@@ -756,7 +756,7 @@ export const RECIPES = [
     },
   },
   {
-    id:22, num:'RECIPE 20', category:'wraps', img:'/r22.png',
+    id:22, num:'RECIPE 20', category:'wraps', img:'/r22.jpg',
     name:'BEEF POWER WRAP',
     tag:'Big flavor. Lean protein. Real results.',
     cal:450, protein:42, carbs:33, fat:16, fiber:8, sugar:4,
@@ -793,7 +793,7 @@ export const RECIPES = [
     },
   },
   {
-    id:23, num:'RECIPE 21', category:'wraps', img:'/r23.png',
+    id:23, num:'RECIPE 21', category:'wraps', img:'/r23.jpg',
     name:'TUNA POWER WRAP',
     tag:'Simple ingredients. Serious results.',
     cal:360, protein:38, carbs:30, fat:9, fiber:6, sugar:3,
