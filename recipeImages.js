@@ -12,7 +12,6 @@ import r11 from './r11.jpg'
 import r12 from './r12.jpg'
 import r13 from './r13.jpg'
 import r14 from './r14.jpg'
-import r15 from './r15.jpg'
 import r16 from './r16.jpg'
 import r17 from './r17.jpg'
 import r18 from './r18.jpg'
@@ -25,5 +24,5 @@ import r23 from './r23.jpg'
 export const RECIPE_IMAGES = {
   1:r1, 2:r2, 3:r3, 4:r4, 5:r5, 6:r6, 7:r7, 8:r8,
   9:r9, 10:r10, 11:r11, 12:r12, 13:r13, 14:r14, 15:r15,
-  16:r16, 17:r17, 18:r18, 19:r19, 20:r20, 21:r21, 22:r22, 23:r23
+  15:r16, 17:r17, 18:r18, 19:r19, 20:r20, 21:r21, 22:r22, 23:r23
 }

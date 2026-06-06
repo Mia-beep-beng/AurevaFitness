@@ -85,17 +85,24 @@ const css = `
   /* ── RECIPE MODAL ── */
   .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.88); display:flex; align-items:flex-start; justify-content:center; z-index:200; padding:20px; overflow-y:auto; backdrop-filter:blur(6px); }
   .recipe-modal { background:#0a0a0a; border:1px solid rgba(201,150,12,.22); width:100%; max-width:720px; position:relative; margin:auto; overflow:hidden; }
-  .rm-hero { position:relative; aspect-ratio:16/7; overflow:hidden; background:#111; }
-  .rm-hero img { width:100%; height:100%; object-fit:cover; display:block; }
+  .rm-hero { position:relative; aspect-ratio:16/6; overflow:hidden; background:#111; }
+  .rm-hero img { width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
   .rm-hero-fallback { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:64px; }
-  .rm-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(10,10,10,1) 0%,rgba(10,10,10,.3) 50%,transparent 100%); }
+  .rm-hero-overlay {
+    position:absolute; inset:0;
+    background:
+      linear-gradient(to right, rgba(6,6,6,.95) 0%, rgba(6,6,6,.5) 22%, transparent 40%),
+      linear-gradient(to left,  rgba(6,6,6,.95) 0%, rgba(6,6,6,.5) 22%, transparent 40%),
+      linear-gradient(to bottom, rgba(6,6,6,.7) 0%, transparent 30%),
+      linear-gradient(to top,   rgba(6,6,6,1)   0%, rgba(6,6,6,.5) 45%, transparent 75%);
+  }
   .rm-hero-info { position:absolute; bottom:0; left:0; right:0; padding:24px 28px; }
   .rm-num   { font-size:9px; font-weight:700; color:var(--gold); letter-spacing:3px; }
   .rm-name  { font-family:'Bebas Neue',sans-serif; font-size:clamp(22px,4vw,34px); color:#fff; letter-spacing:2px; line-height:1; margin-bottom:4px; }
   .rm-tag   { font-size:11px; font-weight:300; color:var(--w50); font-style:italic; }
-  .rm-close { position:absolute; top:16px; right:16px; background:rgba(0,0,0,.7); border:1px solid rgba(201,150,12,.25); color:var(--w50); font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; padding:7px 12px; cursor:pointer; transition:all .2s; z-index:10; }
-  .rm-close:hover { border-color:var(--gold); color:var(--gold); }
-  .rm-protein-badge { position:absolute; top:16px; left:16px; background:rgba(0,0,0,.8); border:1px solid var(--gold); padding:10px 14px; text-align:center; }
+  .rm-close { position:absolute; top:14px; right:14px; background:rgba(0,0,0,.9); border:1.5px solid var(--gold); color:var(--gold); font-family:'Montserrat',sans-serif; font-size:11px; font-weight:800; letter-spacing:2px; padding:9px 16px; cursor:pointer; transition:all .2s; z-index:10; }
+  .rm-close:hover { background:var(--gold); color:#060606; }
+  .rm-protein-badge { position:absolute; top:14px; left:14px; background:rgba(0,0,0,.9); border:1.5px solid var(--gold); padding:8px 12px; text-align:center; }
   .rm-pb-num { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--gold); line-height:1; }
   .rm-pb-lbl { font-size:8px; font-weight:700; color:rgba(201,150,12,.7); letter-spacing:2px; }
 

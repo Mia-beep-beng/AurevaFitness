@@ -425,7 +425,7 @@ export const RECIPES = [
   // ── FISH & SEAFOOD ─────────────────────────────────────────────────────────
   {
     id:13, num:'RECIPE 7', category:'fish', img:'/r13.jpg',
-    name:'SALMON & ASPARAGUS POWER PLATE',
+    name:'SEARED SALMON & ASPARAGUS BOWL',
     tag:'Simple. Clean. Premium fuel.',
     cal:460, protein:40, carbs:35, fat:16, fiber:6, sugar:3,
     perfectFor:['Lunch or Dinner','Post-workout','Weight loss','Muscle building','Meal prep'],
@@ -459,7 +459,7 @@ export const RECIPES = [
   },
   {
     id:14, num:'RECIPE 13', category:'fish', img:'/r14.jpg',
-    name:'SALMON & ASPARAGUS POWER PLATE',
+    name:'SALMON & ASPARAGUS WITH DIJON',
     tag:'Clean energy. Healthy fats. Peak performance.',
     cal:430, protein:36, carbs:12, fat:24, fiber:4, sugar:3,
     perfectFor:['Lunch or Dinner','Post-workout','Weight Management','Muscle Building','Healthy Lifestyle'],
@@ -492,45 +492,7 @@ export const RECIPES = [
       recomp: { changes:['Perfect balance of protein, fats & carbs','Great for recovery & energy'], cal:430, protein:36 },
       muscle: { changes:['Add quinoa or brown rice','Increase portion of salmon','Add nuts or seeds'], cal:560, protein:46 },
     },
-  },
-  {
-    id:15, num:'RECIPE 20', category:'fish', img:'/r15.jpg',
-    name:'SALMON & ASPARAGUS POWER PLATE',
-    tag:'Clean protein. Healthy fats. Maximum results.',
-    cal:450, protein:40, carbs:28, fat:20, fiber:6, sugar:3,
-    perfectFor:['Lunch or Dinner','Post-workout','Weight Management','Muscle Building','Busy Weeknights'],
-    ingredients:[
-      '170g (6 oz) salmon fillet',
-      '1 tsp olive oil',
-      '2 garlic cloves, minced',
-      '1 tsp lemon juice',
-      '½ tsp smoked paprika',
-      '½ tsp dried dill (or fresh)',
-      'Salt & black pepper to taste',
-      '1 cup asparagus, trimmed',
-      '1 cup baby potatoes, halved',
-      '½ tsp olive oil (for potatoes)',
-      '¼ tsp garlic powder',
-      'Salt & pepper to taste',
-      'Lemon wedges (for serving)',
-    ],
-    steps:[
-      'Preheat oven to 400°F (200°C).',
-      'Toss halved baby potatoes with olive oil, garlic powder, salt and pepper. Spread on a baking sheet and roast for 20–25 minutes, flipping halfway, until golden and tender.',
-      'Season salmon with garlic, lemon juice, smoked paprika, dill, salt and pepper.',
-      'Heat a skillet over medium-high heat. Add 1 tsp olive oil.',
-      'Sear salmon skin-side down for 4–5 minutes. Flip and cook another 3–4 minutes until cooked through.',
-      'In the last 3 minutes, add asparagus to the skillet. Sauté until tender-crisp.',
-      'Plate salmon, roasted potatoes and asparagus. Add lemon wedges and enjoy!',
-    ],
-    proTip:'Pat salmon dry before cooking for a perfect sear.',
-    swaps:['Swap salmon for cod, tilapia or trout','Use sweet potatoes instead of white potatoes','Serve with quinoa, brown rice or cauliflower rice','Swap asparagus for broccoli or green beans','Add a drizzle of tahini or garlic yogurt sauce'],
-    goals:{
-      fatLoss:{ changes:['Use 130g (4 oz) salmon','Half the potatoes','Extra vegetables','Skip sauce'], cal:380, protein:34 },
-      recomp: { changes:['Follow recipe as written','Perfect balance of protein, carbs & fats'], cal:450, protein:40 },
-      muscle: { changes:['Add ½ cup cooked rice or quinoa','Add extra potatoes','Add 1 tbsp olive oil to veggies','Increase salmon to 220g (8 oz)'], cal:620, protein:52 },
-    },
-  },
+  },,
   {
     id:16, num:'RECIPE 15', category:'fish', img:'/r16.jpg',
     name:'SHRIMP & VEGGIE POWER SKILLET',
@@ -576,7 +538,7 @@ export const RECIPES = [
   // ── STIR-FRIES ─────────────────────────────────────────────────────────────
   {
     id:17, num:'RECIPE 12', category:'stirfry', img:'/r17.jpg',
-    name:'BEEF & BROCCOLI POWER STIR-FRY',
+    name:'CLASSIC BEEF & BROCCOLI STIR-FRY',
     tag:'Bold flavors. Lean protein. Maximum fuel.',
     cal:420, protein:32, carbs:28, fat:16, fiber:6, sugar:8,
     perfectFor:['Lunch or Dinner','Post-workout','Weight Management','Muscle Building','Busy Weeknights'],
@@ -611,7 +573,7 @@ export const RECIPES = [
   },
   {
     id:18, num:'RECIPE 19', category:'stirfry', img:'/r18.jpg',
-    name:'LEAN BEEF & VEGGIE STIR-FRY',
+    name:'LEAN BEEF & RAINBOW VEGGIE STIR-FRY',
     tag:'High protein. Big flavor. Real results.',
     cal:390, protein:36, carbs:30, fat:13, fiber:6, sugar:6,
     perfectFor:['Lunch or Dinner','Post-workout','Weight Management','Muscle Building','Busy Weeknights'],
