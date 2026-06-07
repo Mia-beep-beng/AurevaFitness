@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RECIPES, CATEGORIES } from './recipes.js'
 import { RECIPE_IMAGES } from './recipeImages.js'
+import { useLanguage } from './LanguageContext.jsx'
 
 const ACTIVITY_LEVELS = [
   { val:'1.2',   label:'Sedentary — little or no exercise' },
@@ -310,6 +311,7 @@ function RecipeModal({ recipe, onClose }) {
 }
 
 export default function Nutrition() {
+  const { t } = useLanguage()
   const navigate = useNavigate()
   const [tab, setTab] = useState('recipes')
   const [cat, setCat] = useState('all')
@@ -361,7 +363,7 @@ export default function Nutrition() {
               </svg>
               <div><span className="brand">AUREVA</span><span className="sys">TRAINING SYSTEM</span></div>
             </div>
-            <button className="back-btn" onClick={() => navigate(-1)}>← BACK</button>
+            <button className="back-btn" onClick={() => navigate(-1)}>{t('back')}</button>
           </div>
 
           <div className="tabs">

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLanguage } from './LanguageContext.jsx'
 import { useNavigate } from 'react-router-dom'
 
 const FIELDS = [
@@ -111,6 +112,7 @@ function calcChange(before, after) {
 }
 
 export default function Measurements() {
+  const { t } = useLanguage()
   const navigate = useNavigate()
   const [tab, setTab] = useState('both') // 'before' | 'after' | 'both'
   const [before, setBefore] = useState(EMPTY())
@@ -161,14 +163,12 @@ export default function Measurements() {
 
       <div className="page">
         <div className="wrap">
-          <button className="back-btn" onClick={() => navigate(-1)}>← BACK</button>
+          <button className="back-btn" onClick={() => navigate(-1)}>{t('back')}</button>
 
-          <p className="page-eyebrow">TRACK YOUR TRANSFORMATION</p>
-          <h1 className="page-title">BODY MEASUREMENTS</h1>
+          <p className="page-eyebrow">{t('measurements_nav')}</p>
+          <h1 className="page-title">{t('measurements')}</h1>
           <p className="page-desc">
-            Fill in your measurements on <strong style={{color:'var(--gold)'}}>Day 1</strong> before you start,
-            and again on <strong style={{color:'var(--gold)'}}>Day 28</strong> after you finish.
-            Your progress is saved automatically on this device.
+            Fill in your measurements on <strong style={{color:'var(--gold)'}}>{t('before_day1')}</strong> &nbsp;→&nbsp; <strong style={{color:'var(--gold)'}}>{t('after_day28')}</strong>
           </p>
           <div className="gold-rule"/>
 
@@ -184,9 +184,9 @@ export default function Measurements() {
             <thead>
               <tr>
                 <th>MEASUREMENT</th>
-                {(tab === 'before' || tab === 'both') && <th>BEFORE — DAY 1</th>}
-                {(tab === 'after'  || tab === 'both') && <th>AFTER — DAY 28</th>}
-                {tab === 'both' && <th>CHANGE</th>}
+                {(tab === 'before' || tab === 'both') && <th>{t('before_day1')}</th>}
+                {(tab === 'after'  || tab === 'both') && <th>{t('after_day28')}</th>}
+                {tab === 'both' && <th>{t('change')}</th>}
               </tr>
             </thead>
             <tbody>
@@ -238,18 +238,18 @@ export default function Measurements() {
 
           {/* Notes */}
           <div className="notes-section">
-            <span className="notes-label">HOW I FEEL</span>
+            <span className="notes-label">{t('how_i_feel')}</span>
             <div className="notes-row">
               {(tab === 'before' || tab === 'both') && (
                 <div className="notes-col">
-                  <label>BEFORE (Day 1):</label>
+                  <label>{t('before_day1')}:</label>
                   <textarea className="notes-input" placeholder="How do you feel starting out?" rows={3}
                     value={noteBefore} onChange={e=>setNoteBefore(e.target.value)}/>
                 </div>
               )}
               {(tab === 'after' || tab === 'both') && (
                 <div className="notes-col">
-                  <label>AFTER (Day 28):</label>
+                  <label>{t('after_day28')}:</label>
                   <textarea className="notes-input" placeholder="How do you feel after 28 days?" rows={3}
                     value={noteAfter} onChange={e=>setNoteAfter(e.target.value)}/>
                 </div>
@@ -279,10 +279,10 @@ export default function Measurements() {
 
           {/* Save */}
           <div className="actions">
-            <button className="btn-save" onClick={save}>SAVE MEASUREMENTS</button>
+            <button className="btn-save" onClick={save}>{t('save_meas')}</button>
             <button className="btn-clear" onClick={clearAll}>CLEAR ALL</button>
           </div>
-          <div className={`save-toast${toastVisible?' show':''}`}>✓ Measurements saved to your device</div>
+          <div className={`save-toast${toastVisible?' show':''}`}>✓ {t('save_meas')}</div>
           <p className="footer-note" style={{marginTop:'20px'}}>
             Tip: Take photos on Day 1 and Day 28 in the same pose and lighting for the best comparison.
           </p>

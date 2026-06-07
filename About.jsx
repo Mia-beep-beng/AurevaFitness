@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLanguage } from './LanguageContext.jsx'
 import { useNavigate } from 'react-router-dom'
 
 const css = `
@@ -193,6 +194,7 @@ const BUILDS = [
 ]
 
 export default function About() {
+  const { t } = useLanguage()
   const navigate = useNavigate()
   const [ready, setReady] = useState(false)
   useEffect(() => { const t = setTimeout(() => setReady(true), 80); return () => clearTimeout(t) }, [])
@@ -204,7 +206,7 @@ export default function About() {
         <div className="ab-glow"/>
         <div className={`ab-content${ready ? ' in' : ''}`}>
 
-          <button className="ab-back" onClick={() => navigate(-1)}>← Back</button>
+          <button className="ab-back" onClick={() => navigate(-1)}>{t('back')}</button>
 
           <div className="ab-header">
             <svg width="36" height="32" viewBox="0 0 44 40" fill="none">
@@ -255,7 +257,7 @@ export default function About() {
             <div className="ab-right">
               <div className="ab-photo-wrap">
                 <div className="ab-photo-overlay"/>
-                <div className="ab-photo-script">Become Her.</div>
+                <div className="ab-photo-script">{t('become_her')}</div>
               </div>
               <div className="ab-signature-card">
                 <p className="ab-sig-name">Mia Trofin</p>

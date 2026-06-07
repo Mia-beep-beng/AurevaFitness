@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { WORKOUTS } from './workouts.js'
 import { WORKOUT_IMAGES } from './workoutImages.js'
+import { useLanguage } from './LanguageContext.jsx'
 
 const TYPE_META = {
   LBS:  { label:'LOWER BODY STRENGTH',  color:'#C9960C', bg:'rgba(201,150,12,.12)',  icon:'🦵' },
@@ -165,6 +166,7 @@ function DayCard({ day, onClick }) {
 }
 
 function WorkoutModal({ day, onClose }) {
+  const { t: tr } = useLanguage()
   const t      = getType(day.day)
   const meta   = TYPE_META[t]
   const imgSrc = WORKOUT_IMAGES[day.day]
@@ -199,14 +201,14 @@ function WorkoutModal({ day, onClose }) {
         {/* Sticky header */}
         <div className="wk-close-bar">
           <div>
-            <span className="wk-day-label">DAY {day.day} · WEEK {Math.ceil(day.day/7)}</span>
+            <span className="wk-day-label">{tr('day')} {day.day} · {tr('week')} {Math.ceil(day.day/7)}</span>
             <span className="wk-day-title-sm" style={{ color: meta.color }}>  {day.focus}</span>
           </div>
           <div style={{display:'flex',gap:'8px'}}>
             <button className="wk-log-btn" onClick={() => setShowLog(v => !v)}>
-              {showLog ? '📋 VIEW' : '📝 LOG'}
+              {showLog ? tr('view_workout') : tr('log_workout')}
             </button>
-            <button className="wk-close" onClick={onClose}>✕</button>
+            <button className="wk-close" onClick={onClose}>{tr('close')}</button>
           </div>
         </div>
 
@@ -223,7 +225,7 @@ function WorkoutModal({ day, onClose }) {
         {/* LOGGER view */}
         {showLog && (
           <div className="log-body">
-            <p className="log-intro">Log your weight and reps for each set. Saved on this device.</p>
+            <p className="log-intro">{tr('log_intro')}</p>
             {day.exercises.map((ex, ei) => (
               <div key={ei} className="log-exercise">
                 <div className="log-ex-name">
@@ -248,7 +250,7 @@ function WorkoutModal({ day, onClose }) {
               </div>
             ))}
             <button className="log-save-btn" onClick={saveLog}>
-              {saved ? '✓ SAVED!' : 'SAVE WORKOUT LOG'}
+              {saved ? tr('saved') : tr('save_log')}
             </button>
           </div>
         )}
@@ -260,6 +262,7 @@ function WorkoutModal({ day, onClose }) {
 const WEEKS = [[1,2,3,4,5,6,7],[8,9,10,11,12,13,14],[15,16,17,18,19,20,21],[22,23,24,25,26,27,28]]
 
 export default function Workouts() {
+  const { t: tr } = useLanguage()
   const navigate = useNavigate()
   const [activeDay, setActiveDay] = useState(null)
 
@@ -288,8 +291,8 @@ export default function Workouts() {
           </div>
 
           <p className="sec-eye">28-DAY PROGRAM</p>
-          <h1 className="sec-title">YOUR WORKOUTS</h1>
-          <p className="sec-desc">All 28 days of training — organized by week. Tap any day to see the full workout: exercises, sets, reps, rest times, core finisher, and cardio options.</p>
+          <h1 className="sec-title">{tr('your_workouts')}</h1>
+          <p className="sec-desc">{tr('workouts_desc')}</p>
 
           {/* Legend */}
           <div className="legend">
@@ -304,7 +307,7 @@ export default function Workouts() {
           {/* 4 weeks */}
           {WEEKS.map((week, wi) => (
             <div key={wi} className="week-block">
-              <p className="week-label">WEEK {wi + 1}</p>
+              <p className="week-label">{tr('week')} {wi + 1}</p>
               <div className="days-row">
                 {week.map(d => {
                   const workout = WORKOUTS[d]

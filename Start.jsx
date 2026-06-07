@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import whyImg from "./hero-why.jpg";
+import { useLanguage } from './LanguageContext.jsx';
 
 const css = `
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -90,20 +91,21 @@ const css = `
 `;
 
 export default function Start() {
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [ready, setReady] = useState(false);
   useEffect(() => { const t = setTimeout(() => setReady(true), 80); return () => clearTimeout(t); }, []);
 
   const LINKS = [
-    { icon:"📏", label:"MEASUREMENTS",   desc:"Track before & after results",    to:"/measurements", primary:false, external:false },
-    { icon:"💳", label:"GET THE PROGRAM",    desc:"Start your 28-day transformation",  to:"/pricing",   primary:true,  external:false },
+    { icon:"📏", label:t("measurements_nav"), desc:t("meas_desc").slice(0,30)+"...", to:"/measurements", primary:false, external:false },
+    { icon:"💳", label:t("pricing_nav"),       desc:t("your_program"),                   to:"/pricing",   primary:true,  external:false },
     { icon:"🔐", label:"LOG IN",             desc:"Access your account",               to:"/",          primary:false, external:false },
     { icon:"📱", label:"DOWNLOAD iOS APP",   desc:"Available on the App Store",         href:"https://apps.apple.com", external:true },
     { icon:"🤖", label:"DOWNLOAD ANDROID",   desc:"Available on Google Play",           href:"https://play.google.com", external:true },
     { icon:"📸", label:"@AUREVAFITNESS",     desc:"Follow us on Instagram",             href:"https://www.instagram.com/AurevaFitness", external:true },
     { icon:"📘", label:"FACEBOOK",           desc:"Aureva Training System",             href:"https://www.facebook.com/AurevaTrainingSystem", external:true },
-    { icon:"🥗", label:"NUTRITION & MEAL PLAN", desc:"Macros calculator + 28-day meals", to:"/nutrition", primary:false, external:false },
-    { icon:"🏋", label:"28-DAY WORKOUTS", desc:"All workout days & exercises", to:"/workouts", primary:false, external:false },
+    { icon:"🥗", label:t("nutrition_nav"),      desc:"Macros + "+t("your_program").slice(0,14), to:"/nutrition", primary:false, external:false },
+    { icon:"🏋", label:t("workouts_nav"),  desc:t("workouts_desc").slice(0,34)+"...", to:"/workouts", primary:false, external:false },
     { icon:"👩", label:"ABOUT MIA",          desc:"Hi, I'm Mia — meet your coach",     to:"/about",     primary:false, external:false },
   ];
 

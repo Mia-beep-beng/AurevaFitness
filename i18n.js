@@ -64,6 +64,7 @@ const base = {
   meas_desc:'Fill in your measurements before and after the 28-day program.',
   before_day1:'BEFORE — DAY 1', after_day28:'AFTER — DAY 28', change:'CHANGE',
   save_meas:'SAVE MEASUREMENTS', how_i_feel:'HOW I FEEL',
+  workouts_desc:'All 28 training days — organized by week. Tap any day to view the full workout.',
   workouts_nav:'WORKOUTS', nutrition_nav:'NUTRITION',
   measurements_nav:'MEASUREMENTS', about_nav:'ABOUT', pricing_nav:'PRICING',
   back:'← BACK',
