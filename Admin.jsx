@@ -21,6 +21,8 @@ const css = `
   .welcome { font-family:'Great Vibes',cursive; font-size:36px; color:var(--gold); text-shadow:0 0 30px rgba(201,150,12,.3); }
   .logout { background:none; border:1px solid rgba(255,255,255,.1); color:var(--w35); font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; padding:8px 16px; cursor:pointer; transition:all .2s; }
   .logout:hover { border-color:rgba(201,150,12,.3); color:var(--gold); }
+  .client-view-btn { background:rgba(201,150,12,.12); border:1px solid rgba(201,150,12,.4); color:var(--gold); font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; padding:8px 16px; cursor:pointer; transition:all .2s; }
+  .client-view-btn:hover { background:rgba(201,150,12,.22); }
   .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:36px; }
   .stat-card { background:var(--w05); border:1px solid rgba(201,150,12,.12); padding:20px; position:relative; overflow:hidden; }
   .stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(to right,transparent,var(--gold),transparent); }
@@ -85,7 +87,7 @@ export default function Admin() {
             </div>
             <div style={{display:'flex',alignItems:'center',gap:'16px'}}>
               <p className="welcome">{t('admin_welcome')}.</p>
-              <button className="logout" onClick={() => navigate('/')}>{t('logout')}</button>
+              <button className="logout" onClick={() => { localStorage.removeItem('aureva-is-admin'); navigate('/') }}>{t('logout')}</button>
             </div>
           </div>
 
@@ -96,6 +98,15 @@ export default function Admin() {
                 <div className="stat-lbl">{s.lbl}</div>
               </div>
             ))}
+          </div>
+
+          {/* ── CLIENT VIEW BANNER ── */}
+          <div style={{background:'rgba(201,150,12,.07)',border:'1px solid rgba(201,150,12,.35)',padding:'18px 22px',marginBottom:'28px',display:'flex',alignItems:'center',justifyContent:'space-between',gap:'16px',flexWrap:'wrap'}}>
+            <div>
+              <p style={{fontSize:'9px',fontWeight:800,color:'rgba(201,150,12,.7)',letterSpacing:'3px',marginBottom:'4px'}}>ADMIN TOOL</p>
+              <p style={{fontSize:'13px',fontWeight:600,color:'#fff'}}>{t('client_view_desc')}</p>
+            </div>
+            <button className="client-view-btn" onClick={() => navigate('/workouts')}>{t('client_view')}</button>
           </div>
 
           <p className="sec-title">{t('website_pages')}</p>

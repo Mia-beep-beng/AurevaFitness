@@ -196,6 +196,7 @@ export default function Login() {
     const adminPass  = import.meta.env.VITE_ADMIN_PASSWORD || ''
 
     if (email.trim().toLowerCase() === adminEmail.toLowerCase() && pw === adminPass) {
+      localStorage.setItem('aureva-is-admin', 'true')
       setTimeout(() => { navigate('/admin') }, 600)
       return
     }

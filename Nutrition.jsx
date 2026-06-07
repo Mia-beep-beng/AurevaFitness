@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { RECIPES, CATEGORIES } from './recipes.js'
 import { RECIPE_IMAGES } from './recipeImages.js'
 import { useLanguage } from './LanguageContext.jsx'
+import LangSelector from './LangSelector.jsx'
 
 const ACTIVITY_LEVELS = [
   { val:'1.2',   label:'Sedentary — little or no exercise' },
@@ -193,6 +194,7 @@ const css = `
 `
 
 function RecipeCard({ recipe, onClick }) {
+  const { t } = useLanguage()
   const catEmojis = { breakfast:'🌅', bowls:'🥣', fish:'🐟', stirfry:'🥘', plates:'💪', wraps:'🌯' }
   const imgSrc = RECIPE_IMAGES[recipe.id]
   return (
@@ -207,7 +209,7 @@ function RecipeCard({ recipe, onClick }) {
         }
         <div className="protein-badge">
           <span className="pb-num">{recipe.protein}g</span>
-          <span className="pb-lbl">PROTEIN</span>
+          <span className="pb-lbl">{t("protein")}</span>
         </div>
       </div>
       <div className="recipe-info">
@@ -225,6 +227,7 @@ function RecipeCard({ recipe, onClick }) {
 }
 
 function RecipeModal({ recipe, onClose }) {
+  const { t } = useLanguage()
   const catEmojis = { breakfast:'🌅', bowls:'🥣', fish:'🐟', stirfry:'🥘', plates:'💪', wraps:'🌯' }
   const imgSrc = RECIPE_IMAGES[recipe.id]
   return (
@@ -238,7 +241,7 @@ function RecipeModal({ recipe, onClose }) {
               </div>
           }
           <div className="rm-hero-overlay"/>
-          <div className="rm-protein-badge"><span className="rm-pb-num">{recipe.protein}g</span><span className="rm-pb-lbl">PROTEIN</span></div>
+          <div className="rm-protein-badge"><span className="rm-pb-num">{recipe.protein}g</span><span className="rm-pb-lbl">{t("protein")}</span></div>
           <button className="rm-close" onClick={onClose}>✕ CLOSE</button>
           <div className="rm-hero-info">
             <p className="rm-num">{recipe.num}</p>
@@ -248,7 +251,7 @@ function RecipeModal({ recipe, onClose }) {
         </div>
         <div className="rm-body">
           <div className="rm-macros-row">
-            {[{v:recipe.cal,l:'CALORIES'},{v:recipe.protein+'g',l:'PROTEIN'},{v:recipe.carbs+'g',l:'CARBS'},{v:recipe.fat+'g',l:'FAT'}].map(m => (
+            {[{v:recipe.cal,l:t('calories')},{v:recipe.protein+'g',l:t('protein')},{v:recipe.carbs+'g',l:t('carbs')},{v:recipe.fat+'g',l:t('fat')}].map(m => (
               <div key={m.l} className="rm-macro">
                 <div className="rm-macro-num">{m.v}</div>
                 <div className="rm-macro-lbl">{m.l}</div>
@@ -256,11 +259,11 @@ function RecipeModal({ recipe, onClose }) {
             ))}
           </div>
           <div className="rm-section">
-            <p className="rm-sec-title">INGREDIENTS</p>
+            <p className="rm-sec-title">{t('ingredients')}</p>
             <ul className="rm-list">{recipe.ingredients.map((i,n) => <li key={n}>{i}</li>)}</ul>
           </div>
           <div className="rm-section">
-            <p className="rm-sec-title">HOW TO MAKE IT</p>
+            <p className="rm-sec-title">{t('how_to_make')}</p>
             <ol className="rm-steps">{recipe.steps.map((s,n) => (
               <li key={n}><span className="rm-step-num">{n+1}</span><span>{s}</span></li>
             ))}</ol>
@@ -272,7 +275,7 @@ function RecipeModal({ recipe, onClose }) {
             </div>
           )}
           <div className="rm-section">
-            <p className="rm-sec-title">SWAP IDEAS</p>
+            <p className="rm-sec-title">{t('swap_ideas')}</p>
             <ul className="rm-list">{recipe.swaps.map((s,n) => <li key={n}>{s}</li>)}</ul>
           </div>
           <div className="rm-section">
@@ -363,25 +366,28 @@ export default function Nutrition() {
               </svg>
               <div><span className="brand">AUREVA</span><span className="sys">TRAINING SYSTEM</span></div>
             </div>
-            <button className="back-btn" onClick={() => navigate(-1)}>{t('back')}</button>
+<div style={{display:'flex',alignItems:'center',gap:'10px'}}>
+              <LangSelector/>
+              <button className="back-btn" onClick={() => navigate(-1)}>{t('back')}</button>
+            </div>
           </div>
 
           <div className="tabs">
-            <button className={`tab${tab==='recipes'?' active':''}`}     onClick={()=>setTab('recipes')}>🍽 RECIPES</button>
-            <button className={`tab${tab==='calculator'?' active':''}`}  onClick={()=>setTab('calculator')}>📊 MACROS CALCULATOR</button>
+            <button className={`tab${tab==='recipes'?' active':''}`}     onClick={()=>setTab('recipes')}>{t('recipes_tab')}</button>
+            <button className={`tab${tab==='calculator'?' active':''}`}  onClick={()=>setTab('calculator')}>{t('calculator_tab')}</button>
           </div>
 
           {/* ── RECIPES ── */}
           {tab === 'recipes' && (
             <>
-              <p className="sec-eye">AUREVA NUTRITION</p>
-              <h1 className="sec-title">YOUR RECIPE BOOK</h1>
+              <p className="sec-eye">{t('nutrition_nav')}</p>
+              <h1 className="sec-title">{t('recipe_book')}</h1>
               <p className="sec-desc">23 Aureva-approved recipes — each with exact macros, ingredients, step-by-step instructions, swap ideas, and adjustments for Fat Loss, Recomp, or Muscle Gain. Tap any recipe to see the full details.</p>
 
               <div className="cat-filters">
                 {CATEGORIES.map(c => (
                   <button key={c.key} className={`cat-btn${cat===c.key?' active':''}`} onClick={()=>setCat(c.key)}>
-                    {c.icon} {c.label}
+                    {c.icon} {t('cat_'+c.key) || c.label}
                   </button>
                 ))}
               </div>
@@ -400,8 +406,8 @@ export default function Nutrition() {
           {/* ── CALCULATOR ── */}
           {tab === 'calculator' && (
             <>
-              <p className="sec-eye">PERSONALIZED NUTRITION</p>
-              <h1 className="sec-title">MACROS CALCULATOR</h1>
+              <p className="sec-eye">{t('nutrition_nav')}</p>
+              <h1 className="sec-title">{t('macros_calc')}</h1>
               <p className="sec-desc">Enter your details to get your exact daily calorie and macro targets. Based on the Aureva method: Goal Weight × 0.8–1.0g = Protein. Goal Weight × 0.3g = Fat. Remaining calories = Carbs.</p>
 
               <div className="calc-grid">
@@ -448,7 +454,7 @@ export default function Nutrition() {
                 </div>
               </div>
 
-              <p className="f-label" style={{marginBottom:'12px'}}>YOUR GOAL</p>
+              <p className="f-label" style={{marginBottom:'12px'}}>{t('your_goal')}</p>
               <div className="goal-row">
                 {GOALS.map(g => (
                   <button key={g.key} className={`goal-btn${goal===g.key?' active':''}`} onClick={()=>setGoal(g.key)}>
@@ -459,7 +465,7 @@ export default function Nutrition() {
                 ))}
               </div>
 
-              <button className="calc-cta" onClick={calculate}>CALCULATE MY MACROS →</button>
+              <button className="calc-cta" onClick={calculate}>{t('calc_btn')}</button>
 
               {results && (
                 <div className="results">
@@ -472,9 +478,9 @@ export default function Nutrition() {
                   </div>
                   <div className="macros-grid">
                     {[
-                      {k:'p',l:'PROTEIN', g:results.protein, kcal:results.protein*4, pct:Math.round((results.protein*4/results.calories)*100)},
-                      {k:'c',l:'CARBS',   g:results.carbs,   kcal:results.carbs*4,   pct:Math.round((results.carbs*4/results.calories)*100)},
-                      {k:'f',l:'FAT',     g:results.fat,     kcal:results.fat*9,     pct:Math.round((results.fat*9/results.calories)*100)},
+                      {k:'p',l:t('protein'), g:results.protein, kcal:results.protein*4, pct:Math.round((results.protein*4/results.calories)*100)},
+                      {k:'c',l:t('carbs'),   g:results.carbs,   kcal:results.carbs*4,   pct:Math.round((results.carbs*4/results.calories)*100)},
+                      {k:'f',l:t('fat'),     g:results.fat,     kcal:results.fat*9,     pct:Math.round((results.fat*9/results.calories)*100)},
                     ].map(m => (
                       <div key={m.k} className="macro-card">
                         <span className="macro-name">{m.l}</span>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from './LanguageContext.jsx'
+import LangSelector from './LangSelector.jsx'
 import { useNavigate } from 'react-router-dom'
 
 const FIELDS = [
@@ -164,7 +165,10 @@ export default function Measurements() {
 
       <div className="page">
         <div className="wrap">
-          <button className="back-btn" onClick={() => navigate(-1)}>{t('back')}</button>
+          <div style={{display:'flex',alignItems:'center',gap:'10px',marginBottom:'28px'}}>
+            <LangSelector/>
+            <button className="back-btn" style={{margin:0}} onClick={() => navigate(-1)}>{t('back')}</button>
+          </div>
 
           <p className="page-eyebrow">{t('measurements_nav')}</p>
           <h1 className="page-title">{t('measurements')}</h1>

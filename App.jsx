@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LanguageProvider } from './LanguageContext.jsx'
-import LangSelector from './LangSelector.jsx'
+import LangSelector    from './LangSelector.jsx'
+import AdminFloater    from './AdminFloater.jsx'
 import Login        from './Login.jsx'
 import Pricing      from './Pricing.jsx'
 import AppDemo      from './AppDemo.jsx'
@@ -17,11 +18,12 @@ export default function App() {
     <LanguageProvider>
       <BrowserRouter>
         {/* Global language selector — fixed top-right on every page */}
-        <div style={{
-          position:'fixed', top:'12px', right:'14px', zIndex:9999,
-        }}>
+        <div style={{ position:'fixed', top:'12px', right:'14px', zIndex:9999 }}>
           <LangSelector />
         </div>
+
+        {/* Admin floater — shows on client pages when logged in as admin */}
+        <AdminFloater />
 
         <Routes>
           <Route path="/"              element={<Login />} />
