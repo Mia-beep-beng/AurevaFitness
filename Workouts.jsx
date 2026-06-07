@@ -234,7 +234,7 @@ function WorkoutModal({ day, onClose }) {
                   <span className="log-ex-target">{ex.sets} sets · {ex.reps} reps · {ex.rest}</span>
                 </div>
                 <div className="log-sets-head">
-                  <span>SET</span><span>WEIGHT (kg/lbs)</span><span>REPS DONE</span>
+                  <span>{tr('set_num')}</span><span>{tr('weight_col')}</span><span>{tr('reps_done')}</span>
                 </div>
                 {Array.from({length: Number(ex.sets) || 3}, (_,si) => (
                   <div key={si} className="log-set-row">
@@ -287,7 +287,7 @@ export default function Workouts() {
               </svg>
               <div><span className="brand">AUREVA</span><span className="sys">TRAINING SYSTEM</span></div>
             </div>
-            <button className="back-btn" onClick={() => navigate(-1)}>← BACK</button>
+            <button className="back-btn" onClick={() => navigate(-1)}>{tr('back')}</button>
           </div>
 
           <p className="sec-eye">28-DAY PROGRAM</p>

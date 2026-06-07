@@ -223,7 +223,7 @@ export default function About() {
             <div className="ab-left">
               <span className="ab-welcome-label">AUREVA TRAINING SYSTEM</span>
               <h1 className="ab-title">
-                <span>WELCOME</span>
+                <span>{t('welcome_back').split(' ').slice(0,1)[0]}</span>
                 <span style={{color:'var(--gold-hi)'}}>TO AUREVA</span>
               </h1>
               <div className="ab-divider"/>

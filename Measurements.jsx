@@ -3,6 +3,7 @@ import { useLanguage } from './LanguageContext.jsx'
 import { useNavigate } from 'react-router-dom'
 
 const FIELDS = [
+  { key:'date_lbl', label:'DATE',    hint:'when measured' },
   { key:'weight',   label:'WEIGHT',        hint:'kg / lbs' },
   { key:'bodyfat',  label:'BODY FAT %',    hint:'optional' },
   { key:'bust',     label:'BUST / CHEST',  hint:'cm / in' },
@@ -183,7 +184,7 @@ export default function Measurements() {
           <table className="meas-table">
             <thead>
               <tr>
-                <th>MEASUREMENT</th>
+                <th>{t('meas_desc').split(' ').slice(0,1).join('')}</th>
                 {(tab === 'before' || tab === 'both') && <th>{t('before_day1')}</th>}
                 {(tab === 'after'  || tab === 'both') && <th>{t('after_day28')}</th>}
                 {tab === 'both' && <th>{t('change')}</th>}
@@ -260,7 +261,7 @@ export default function Measurements() {
           {/* Progress overview — only when both columns filled */}
           {tab === 'both' && progress.length > 0 && (
             <>
-              <p className="progress-title">YOUR PROGRESS</p>
+              <p className="progress-title">{t('progress_title')}</p>
               <div className="progress-grid">
                 {progress.map(f => {
                   const ch = calcChange(before[f.key], after[f.key])
@@ -280,7 +281,7 @@ export default function Measurements() {
           {/* Save */}
           <div className="actions">
             <button className="btn-save" onClick={save}>{t('save_meas')}</button>
-            <button className="btn-clear" onClick={clearAll}>CLEAR ALL</button>
+            <button className="btn-clear" onClick={clearAll}>{t('clear_all')}</button>
           </div>
           <div className={`save-toast${toastVisible?' show':''}`}>✓ {t('save_meas')}</div>
           <p className="footer-note" style={{marginTop:'20px'}}>

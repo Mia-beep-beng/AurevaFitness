@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LanguageProvider } from './LanguageContext.jsx'
+import LangSelector from './LangSelector.jsx'
 import Login        from './Login.jsx'
 import Pricing      from './Pricing.jsx'
 import AppDemo      from './AppDemo.jsx'
@@ -15,6 +16,13 @@ export default function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
+        {/* Global language selector — fixed top-right on every page */}
+        <div style={{
+          position:'fixed', top:'12px', right:'14px', zIndex:9999,
+        }}>
+          <LangSelector />
+        </div>
+
         <Routes>
           <Route path="/"              element={<Login />} />
           <Route path="/pricing"       element={<Pricing />} />

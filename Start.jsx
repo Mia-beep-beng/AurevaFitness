@@ -137,7 +137,7 @@ export default function Start() {
           </div>
 
           <p className="script">Become Her.</p>
-          <p className="tagline">DISCIPLINE · STRENGTH · CONFIDENCE</p>
+          <p className="tagline">{t('tagline')}</p>
           <div className="divider"/>
 
           {/* Why Aureva — featured image */}

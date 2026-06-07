@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLanguage } from './LanguageContext.jsx'
 import { useNavigate } from 'react-router-dom'
 
 const css = `
@@ -57,6 +58,7 @@ const PAGES = [
 ]
 
 export default function Admin() {
+  const { t } = useLanguage()
   const navigate = useNavigate()
   return (
     <>
@@ -82,13 +84,13 @@ export default function Admin() {
               <span className="badge">ADMIN</span>
             </div>
             <div style={{display:'flex',alignItems:'center',gap:'16px'}}>
-              <p className="welcome">Welcome, Mia.</p>
-              <button className="logout" onClick={() => navigate('/')}>LOG OUT</button>
+              <p className="welcome">{t('admin_welcome')}.</p>
+              <button className="logout" onClick={() => navigate('/')}>{t('logout')}</button>
             </div>
           </div>
 
           <div className="stats">
-            {[{num:'28',lbl:'WORKOUT DAYS'},{num:'3',lbl:'PRICING PLANS'},{num:'8',lbl:'WEBSITE PAGES'},{num:'1',lbl:'MEAL PLAN'}].map(s => (
+            {[{num:'28',lbl:t('workouts_nav')},{num:'3',lbl:t('pricing_nav')},{num:'8',lbl:t('website_pages')},{num:'1',lbl:t('nutrition_nav')}].map(s => (
               <div key={s.lbl} className="stat-card">
                 <div className="stat-num">{s.num}</div>
                 <div className="stat-lbl">{s.lbl}</div>
@@ -96,7 +98,7 @@ export default function Admin() {
             ))}
           </div>
 
-          <p className="sec-title">WEBSITE PAGES</p>
+          <p className="sec-title">{t('website_pages')}</p>
           <div className="pages-grid">
             {PAGES.map(p => (
               <div key={p.name} className="page-card" onClick={() => navigate(p.to)}>
@@ -107,7 +109,7 @@ export default function Admin() {
             ))}
           </div>
 
-          <p className="sec-title">QUICK ACTIONS</p>
+          <p className="sec-title">{t('quick_actions')}</p>
           <div className="pages-grid" style={{marginBottom:'48px'}}>
             {[
               {icon:'📸',name:'INSTAGRAM',  desc:'@AurevaFitness',           href:'https://www.instagram.com/AurevaFitness'},

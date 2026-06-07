@@ -1,16 +1,18 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { getT, LANGUAGES } from './i18n.js'
 
 const LangCtx = createContext(null)
 
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(() => {
+  const [lang, setLangState] = useState(() => {
     return localStorage.getItem('aureva-lang') || 'EN'
   })
 
-  useEffect(() => {
-    localStorage.setItem('aureva-lang', lang)
-  }, [lang])
+  // Save synchronously so navigation right after selection never loses the language
+  const setLang = (newLang) => {
+    localStorage.setItem('aureva-lang', newLang)
+    setLangState(newLang)
+  }
 
   const t = (key) => getT(lang)[key] || getT('EN')[key] || key
 
