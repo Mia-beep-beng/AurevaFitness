@@ -95,6 +95,7 @@ export default function Start() {
   useEffect(() => { const t = setTimeout(() => setReady(true), 80); return () => clearTimeout(t); }, []);
 
   const LINKS = [
+    { icon:"📏", label:"MEASUREMENTS",   desc:"Track before & after results",    to:"/measurements", primary:false, external:false },
     { icon:"💳", label:"GET THE PROGRAM",    desc:"Start your 28-day transformation",  to:"/pricing",   primary:true,  external:false },
     { icon:"🔐", label:"LOG IN",             desc:"Access your account",               to:"/",          primary:false, external:false },
     { icon:"📱", label:"DOWNLOAD iOS APP",   desc:"Available on the App Store",         href:"https://apps.apple.com", external:true },

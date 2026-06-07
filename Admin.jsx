@@ -88,7 +88,7 @@ export default function Admin() {
           </div>
 
           <div className="stats">
-            {[{num:'28',lbl:'WORKOUT DAYS'},{num:'3',lbl:'PRICING PLANS'},{num:'6',lbl:'WEBSITE PAGES'},{num:'1',lbl:'MEAL PLAN'}].map(s => (
+            {[{num:'28',lbl:'WORKOUT DAYS'},{num:'3',lbl:'PRICING PLANS'},{num:'8',lbl:'WEBSITE PAGES'},{num:'1',lbl:'MEAL PLAN'}].map(s => (
               <div key={s.lbl} className="stat-card">
                 <div className="stat-num">{s.num}</div>
                 <div className="stat-lbl">{s.lbl}</div>

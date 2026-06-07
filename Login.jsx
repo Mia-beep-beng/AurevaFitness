@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import heroImg from './hero-login.jpg'
+import LangSelector from './LangSelector.jsx'
 
 const PARTICLES = Array.from({ length: 28 }, (_, i) => ({
   id: i,
@@ -254,6 +255,9 @@ export default function Login() {
             <div className="logo-txt">
               <span className="l-brand">AUREVA</span>
               <span className="l-sub">TRAINING SYSTEM</span>
+            </div>
+            <div style={{marginLeft:'auto'}}>
+              <LangSelector/>
             </div>
           </div>
 

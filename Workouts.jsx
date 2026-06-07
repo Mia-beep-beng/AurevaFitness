@@ -95,6 +95,43 @@ const css = `
   .wk-full-img { width:100%; height:auto; display:block; }
   .wk-hero-fallback { min-height:400px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; }
 
+  /* Logger */
+  .wk-log-btn {
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2);
+    color:var(--w70); font-family:'Montserrat',sans-serif;
+    font-size:10px; font-weight:700; letter-spacing:1.5px;
+    padding:7px 12px; cursor:pointer; transition:all .2s;
+  }
+  .wk-log-btn:hover { border-color:var(--gold); color:var(--gold); }
+  .log-body { padding:20px; }
+  .log-intro { font-size:11px; color:var(--w50); margin-bottom:20px; font-style:italic; }
+  .log-exercise { margin-bottom:20px; border:1px solid rgba(201,150,12,.1); }
+  .log-ex-name {
+    background:rgba(201,150,12,.06); padding:10px 12px;
+    font-size:12px; font-weight:700; color:#fff;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .log-ex-num { width:22px; height:22px; background:var(--gold); color:#060606; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; border-radius:50%; flex-shrink:0; }
+  .log-ex-target { margin-left:auto; font-size:9.5px; color:var(--gold); font-weight:600; letter-spacing:.5px; }
+  .log-sets-head { display:grid; grid-template-columns:40px 1fr 1fr; gap:8px; padding:6px 12px; background:rgba(0,0,0,.3); font-size:8px; font-weight:700; color:var(--w35); letter-spacing:1.5px; }
+  .log-set-row { display:grid; grid-template-columns:40px 1fr 1fr; gap:8px; padding:6px 12px; align-items:center; border-top:1px solid rgba(255,255,255,.04); }
+  .log-set-num { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--gold); text-align:center; }
+  .log-input {
+    background:rgba(255,255,255,.05); border:1px solid rgba(201,150,12,.15);
+    color:#fff; font-family:'Montserrat',sans-serif; font-size:12px;
+    padding:7px 10px; text-align:center; outline:none; transition:border-color .2s; width:100%;
+  }
+  .log-input:focus { border-color:rgba(201,150,12,.6); }
+  .log-input::placeholder { color:rgba(255,255,255,.2); font-size:10px; }
+  .log-save-btn {
+    width:100%; margin-top:16px; padding:14px;
+    background:linear-gradient(90deg,#A67408,#F0C832 50%,#A67408);
+    border:none; color:#040404; font-family:'Montserrat',sans-serif;
+    font-size:11px; font-weight:800; letter-spacing:3px; cursor:pointer;
+    transition:opacity .2s;
+  }
+  .log-save-btn:hover { opacity:.9; }
+
   @media(max-width:700px) { .days-row { grid-template-columns:repeat(4,1fr); } }
   @media(max-width:420px) { .days-row { grid-template-columns:repeat(3,1fr); } }
 `
@@ -131,6 +168,29 @@ function WorkoutModal({ day, onClose }) {
   const t      = getType(day.day)
   const meta   = TYPE_META[t]
   const imgSrc = WORKOUT_IMAGES[day.day]
+  const [showLog, setShowLog] = useState(false)
+
+  const logKey = `aureva-log-day${day.day}`
+  const [log, setLog] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(logKey) || '{}') } catch { return {} }
+  })
+  const [saved, setSaved] = useState(false)
+
+  const updateLog = (exIdx, setIdx, field, val) => {
+    setLog(prev => {
+      const next = {...prev}
+      if (!next[exIdx]) next[exIdx] = {}
+      if (!next[exIdx][setIdx]) next[exIdx][setIdx] = {}
+      next[exIdx][setIdx][field] = val
+      return next
+    })
+  }
+
+  const saveLog = () => {
+    const entry = { date: new Date().toISOString().slice(0,10), log }
+    localStorage.setItem(logKey, JSON.stringify(entry))
+    setSaved(true); setTimeout(() => setSaved(false), 2000)
+  }
 
   return (
     <div className="modal-overlay" onClick={e => { if(e.target===e.currentTarget) onClose() }}>
@@ -142,17 +202,56 @@ function WorkoutModal({ day, onClose }) {
             <span className="wk-day-label">DAY {day.day} · WEEK {Math.ceil(day.day/7)}</span>
             <span className="wk-day-title-sm" style={{ color: meta.color }}>  {day.focus}</span>
           </div>
-          <button className="wk-close" onClick={onClose}>✕ CLOSE</button>
+          <div style={{display:'flex',gap:'8px'}}>
+            <button className="wk-log-btn" onClick={() => setShowLog(v => !v)}>
+              {showLog ? '📋 VIEW' : '📝 LOG'}
+            </button>
+            <button className="wk-close" onClick={onClose}>✕</button>
+          </div>
         </div>
 
-        {/* Full workout infographic — scroll to read everything */}
-        {imgSrc
-          ? <img src={imgSrc} alt={`Day ${day.day}`} className="wk-full-img"/>
-          : <div className="wk-hero-fallback" style={{ background: meta.bg, minHeight:'400px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'12px' }}>
-              <span style={{fontSize:'72px'}}>{meta.icon}</span>
-              <p style={{color:meta.color,fontFamily:"'Bebas Neue',sans-serif",fontSize:'28px',letterSpacing:'3px'}}>DAY {day.day} · {day.focus}</p>
-            </div>
-        }
+        {/* INFOGRAPHIC view */}
+        {!showLog && (
+          imgSrc
+            ? <img src={imgSrc} alt={`Day ${day.day}`} className="wk-full-img"/>
+            : <div className="wk-hero-fallback" style={{ background: meta.bg, minHeight:'400px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'12px' }}>
+                <span style={{fontSize:'72px'}}>{meta.icon}</span>
+                <p style={{color:meta.color,fontFamily:"'Bebas Neue',sans-serif",fontSize:'28px',letterSpacing:'3px'}}>DAY {day.day} · {day.focus}</p>
+              </div>
+        )}
+
+        {/* LOGGER view */}
+        {showLog && (
+          <div className="log-body">
+            <p className="log-intro">Log your weight and reps for each set. Saved on this device.</p>
+            {day.exercises.map((ex, ei) => (
+              <div key={ei} className="log-exercise">
+                <div className="log-ex-name">
+                  <span className="log-ex-num">{ei+1}</span>
+                  {ex.name}
+                  <span className="log-ex-target">{ex.sets} sets · {ex.reps} reps · {ex.rest}</span>
+                </div>
+                <div className="log-sets-head">
+                  <span>SET</span><span>WEIGHT (kg/lbs)</span><span>REPS DONE</span>
+                </div>
+                {Array.from({length: Number(ex.sets) || 3}, (_,si) => (
+                  <div key={si} className="log-set-row">
+                    <span className="log-set-num">{si+1}</span>
+                    <input className="log-input" type="number" placeholder="kg / lbs"
+                      value={log[ei]?.[si]?.weight || ''}
+                      onChange={e => updateLog(ei, si, 'weight', e.target.value)}/>
+                    <input className="log-input" type="number" placeholder="reps"
+                      value={log[ei]?.[si]?.reps || ''}
+                      onChange={e => updateLog(ei, si, 'reps', e.target.value)}/>
+                  </div>
+                ))}
+              </div>
+            ))}
+            <button className="log-save-btn" onClick={saveLog}>
+              {saved ? '✓ SAVED!' : 'SAVE WORKOUT LOG'}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )

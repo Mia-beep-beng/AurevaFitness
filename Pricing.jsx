@@ -215,6 +215,8 @@ const css = `
   .pay-input:hover { border-color:rgba(201,150,12,.32); }
   .pay-input:focus { border-color:rgba(201,150,12,.65); background:rgba(201,150,12,.04); }
   .pay-input::placeholder { color:rgba(255,255,255,.18); }
+  .pay-err { border-color:rgba(255,80,80,.6) !important; }
+  .field-err { display:block; font-size:10px; color:rgba(255,100,100,.9); margin-top:5px; letter-spacing:.5px; }
   .pay-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
   .pay-cta {
     width:100%; margin-top:24px;
@@ -326,6 +328,7 @@ export default function Pricing() {
   const [expiry,   setExpiry]   = useState('')
   const [cvv,      setCvv]      = useState('')
   const [processing, setProc]  = useState(false)
+  const [errors,   setErrors]  = useState({})
 
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 80)
@@ -336,6 +339,22 @@ export default function Pricing() {
   const formatExpiry= v => { const d=v.replace(/\D/g,'').slice(0,4); return d.length>=2?d.slice(0,2)+'/'+d.slice(2):d }
 
   const plan = PLANS.find(p => p.id === selected)
+
+  const validatePayment = () => {
+    const e = {}
+    if (!name.trim())                             e.name   = 'Please enter the cardholder name.'
+    if (card.replace(/\s/g,'').length < 16)       e.card   = 'Please enter a valid 16-digit card number.'
+    if (!/^\d{2}\/\d{2}$/.test(expiry))          e.expiry = 'Please enter expiry as MM/YY.'
+    else {
+      const [mm, yy] = expiry.split('/').map(Number)
+      const now = new Date(); const cy = now.getFullYear()%100; const cm = now.getMonth()+1
+      if (mm < 1 || mm > 12)                     e.expiry = 'Invalid month.'
+      else if (yy < cy || (yy === cy && mm < cm)) e.expiry = 'This card has expired.'
+    }
+    if (cvv.length < 3)                           e.cvv    = 'Please enter a valid CVV.'
+    setErrors(e)
+    return Object.keys(e).length === 0
+  }
   const cl   = ready ? ' in' : ''
 
   if (step === 'plans') return (
@@ -420,31 +439,35 @@ export default function Pricing() {
             <h2 className="pay-title">PAYMENT DETAILS</h2>
             <div className="pay-field">
               <label className="pay-label">Cardholder Name</label>
-              <input className="pay-input" type="text" value={name}
-                onChange={e=>setName(e.target.value)} placeholder="Jane Smith"/>
+              <input className={`pay-input${errors.name?' pay-err':''}`} type="text" value={name}
+                onChange={e=>{setName(e.target.value);setErrors(p=>({...p,name:''}))}} placeholder="Jane Smith"/>
+              {errors.name && <span className="field-err">⚠ {errors.name}</span>}
             </div>
             <div className="pay-field">
               <label className="pay-label">Card Number</label>
-              <input className="pay-input" type="text" value={card}
-                onChange={e=>setCard(formatCard(e.target.value))}
+              <input className={`pay-input${errors.card?' pay-err':''}`} type="text" value={card}
+                onChange={e=>{setCard(formatCard(e.target.value));setErrors(p=>({...p,card:''}))}}
                 placeholder="1234 5678 9012 3456" maxLength={19}/>
+              {errors.card && <span className="field-err">⚠ {errors.card}</span>}
             </div>
             <div className="pay-row">
               <div className="pay-field">
                 <label className="pay-label">Expiry</label>
-                <input className="pay-input" type="text" value={expiry}
-                  onChange={e=>setExpiry(formatExpiry(e.target.value))}
+                <input className={`pay-input${errors.expiry?' pay-err':''}`} type="text" value={expiry}
+                  onChange={e=>{setExpiry(formatExpiry(e.target.value));setErrors(p=>({...p,expiry:''}))}}
                   placeholder="MM/YY" maxLength={5}/>
+                {errors.expiry && <span className="field-err">⚠ {errors.expiry}</span>}
               </div>
               <div className="pay-field">
                 <label className="pay-label">CVV</label>
-                <input className="pay-input" type="text" value={cvv}
-                  onChange={e=>setCvv(e.target.value.replace(/\D/g,'').slice(0,4))}
+                <input className={`pay-input${errors.cvv?' pay-err':''}`} type="text" value={cvv}
+                  onChange={e=>{setCvv(e.target.value.replace(/\D/g,'').slice(0,4));setErrors(p=>({...p,cvv:''}))}}
                   placeholder="•••" maxLength={4}/>
+                {errors.cvv && <span className="field-err">⚠ {errors.cvv}</span>}
               </div>
             </div>
             <button className="pay-cta"
-              onClick={() => { setProc(true); setTimeout(()=>setStep('done'),2200) }}
+              onClick={() => { if (validatePayment()) { setProc(true); setTimeout(()=>setStep('done'),2200) } }}
               disabled={processing}>
               {processing ? 'PROCESSING...' : `COMPLETE PURCHASE · ${plan.price}`}
             </button>
