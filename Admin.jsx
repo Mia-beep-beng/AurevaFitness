@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { WORKOUTS } from './workouts.js'
 
 const css = `
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -37,49 +36,15 @@ const css = `
   .pc-name { font-size:11px; font-weight:700; color:#fff; letter-spacing:1.5px; }
   .pc-desc { font-size:10px; color:var(--w35); }
   .pc-arr  { font-size:14px; color:var(--gold); opacity:.5; margin-left:auto; }
-  .days-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-bottom:36px; }
-  .day-pill { background:var(--w05); border:1px solid rgba(201,150,12,.12); padding:10px 6px; text-align:center; cursor:pointer; transition:all .2s; }
-  .day-pill:hover { border-color:var(--gold); background:rgba(201,150,12,.08); transform:translateY(-2px); }
-  .day-num { font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--gold); line-height:1; }
-  .day-lbl { font-size:7px; color:var(--w35); letter-spacing:1px; margin-top:3px; }
   .admin-footer { border-top:1px solid rgba(201,150,12,.1); padding-top:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
   .admin-footer p { font-size:10px; color:rgba(255,255,255,.2); letter-spacing:1px; }
-
-  /* ── Workout Modal ── */
-  .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:flex-start; justify-content:center; z-index:100; padding:20px; overflow-y:auto; backdrop-filter:blur(4px); }
-  .modal { background:#0a0a0a; border:1px solid rgba(201,150,12,.25); width:100%; max-width:680px; position:relative; margin:auto; }
-  .modal::before { content:''; position:absolute; top:0; left:28px; right:28px; height:1.5px; background:linear-gradient(to right,transparent,var(--gold),transparent); }
-  .modal-header { padding:28px 28px 20px; border-bottom:1px solid rgba(255,255,255,.07); display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
-  .modal-day { font-family:'Bebas Neue',sans-serif; font-size:14px; color:var(--w35); letter-spacing:4px; margin-bottom:4px; }
-  .modal-focus { font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--gold); letter-spacing:2px; line-height:1; }
-  .modal-close { background:none; border:1px solid rgba(255,255,255,.15); color:var(--w35); font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; padding:8px 14px; cursor:pointer; flex-shrink:0; transition:all .2s; }
-  .modal-close:hover { border-color:var(--gold); color:var(--gold); }
-  .modal-body { padding:24px 28px; }
-  .modal-section { margin-bottom:24px; }
-  .modal-sec-title { font-size:10px; font-weight:800; color:var(--gold); letter-spacing:3px; margin-bottom:12px; }
-  .exercise-table { width:100%; border-collapse:collapse; }
-  .exercise-table th { font-size:9px; font-weight:700; color:var(--w35); letter-spacing:2px; text-align:left; padding:6px 10px; border-bottom:1px solid rgba(201,150,12,.15); }
-  .exercise-table th:not(:first-child) { text-align:center; }
-  .exercise-table td { font-size:12px; color:var(--w70); padding:9px 10px; border-bottom:1px solid rgba(255,255,255,.05); }
-  .exercise-table td:not(:first-child) { text-align:center; color:var(--w50); }
-  .exercise-table tr:hover td { background:rgba(201,150,12,.04); }
-  .ex-name { font-weight:600; color:#fff; }
-  .info-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  .info-box { background:rgba(201,150,12,.05); border:1px solid rgba(201,150,12,.15); padding:14px; }
-  .info-box-title { font-size:9px; font-weight:800; color:var(--gold); letter-spacing:2.5px; margin-bottom:6px; }
-  .info-box-txt { font-size:12px; color:var(--w70); line-height:1.6; }
-  .modal-note { background:rgba(201,150,12,.08); border:1px solid rgba(201,150,12,.25); padding:14px; text-align:center; margin-top:16px; }
-  .modal-note-txt { font-family:'Great Vibes',cursive; font-size:22px; color:var(--gold); }
 
   @media(max-width:700px) {
     .stats { grid-template-columns:repeat(2,1fr); }
     .pages-grid { grid-template-columns:1fr; }
-    .days-grid { grid-template-columns:repeat(4,1fr); }
-    .info-row { grid-template-columns:1fr; }
   }
 `
 
-const DAY_LABELS = ['LBS','UBS','PUSH','PULL','GLU','COND','REC']
 const PAGES = [
   { icon:'🔐', name:'LOGIN PAGE',   desc:'User entry point',     to:'/' },
   { icon:'💳', name:'PRICING',      desc:'Plans & checkout',      to:'/pricing' },
@@ -93,10 +58,6 @@ const PAGES = [
 
 export default function Admin() {
   const navigate = useNavigate()
-  const [activeDay, setActiveDay] = useState(null)
-
-  const w = activeDay ? WORKOUTS[activeDay] : null
-
   return (
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -146,16 +107,6 @@ export default function Admin() {
             ))}
           </div>
 
-          <p className="sec-title">28-DAY PROGRAM — CLICK ANY DAY TO VIEW WORKOUT</p>
-          <div className="days-grid">
-            {Array.from({length:28},(_,i) => (
-              <div key={i} className="day-pill" onClick={() => setActiveDay(i+1)}>
-                <div className="day-num">{i+1}</div>
-                <div className="day-lbl">{DAY_LABELS[i%7]}</div>
-              </div>
-            ))}
-          </div>
-
           <p className="sec-title">QUICK ACTIONS</p>
           <div className="pages-grid" style={{marginBottom:'48px'}}>
             {[
@@ -178,85 +129,6 @@ export default function Admin() {
         </div>
       </div>
 
-      {/* ── Workout Modal ── */}
-      {w && (
-        <div className="modal-overlay" onClick={e => { if(e.target===e.currentTarget) setActiveDay(null) }}>
-          <div className="modal">
-            <div className="modal-header">
-              <div>
-                <p className="modal-day">DAY {w.day}</p>
-                <p className="modal-focus">{w.focus}</p>
-              </div>
-              <button className="modal-close" onClick={() => setActiveDay(null)}>✕ CLOSE</button>
-            </div>
-            <div className="modal-body">
-
-              {/* Exercises */}
-              <div className="modal-section">
-                <p className="modal-sec-title">MAIN WORKOUT</p>
-                <table className="exercise-table">
-                  <thead>
-                    <tr>
-                      <th>Exercise</th>
-                      <th>Sets</th>
-                      <th>Reps</th>
-                      <th>Rest</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {w.exercises.map((ex,i) => (
-                      <tr key={i}>
-                        <td><span className="ex-name">{ex.name}</span></td>
-                        <td>{ex.sets}</td>
-                        <td>{ex.reps}</td>
-                        <td>{ex.rest || '—'}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* Core */}
-              <div className="modal-section">
-                <p className="modal-sec-title">CORE FINISHER</p>
-                <table className="exercise-table">
-                  <thead>
-                    <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-                  </thead>
-                  <tbody>
-                    {w.core.map((ex,i) => (
-                      <tr key={i}>
-                        <td><span className="ex-name">{ex.name}</span></td>
-                        <td>{ex.sets || '—'}</td>
-                        <td>{ex.reps}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* Info boxes */}
-              <div className="info-row">
-                <div className="info-box">
-                  <p className="info-box-title">CARDIO FINISHER</p>
-                  <p className="info-box-txt">{w.cardio}</p>
-                </div>
-                <div className="info-box">
-                  <p className="info-box-title">TEMPO GUIDE</p>
-                  <p className="info-box-txt" style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:'28px',color:'#C9960C',letterSpacing:'3px'}}>{w.tempo}</p>
-                  <p className="info-box-txt" style={{marginTop:'6px'}}>Control the movement. Build the mind-muscle connection.</p>
-                </div>
-              </div>
-
-              {w.note && (
-                <div className="modal-note">
-                  <p className="modal-note-txt">{w.note}</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </>
   )
 }
