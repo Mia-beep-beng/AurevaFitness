@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import heroImg from './hero-login.jpg'
 import LangSelector from './LangSelector.jsx'
+import { useLanguage } from './LanguageContext.jsx'
+import { RTL_LANGS } from './i18n.js'
 
 const PARTICLES = Array.from({ length: 28 }, (_, i) => ({
   id: i,
@@ -172,11 +174,13 @@ export default function Login() {
   const [ready,    setReady]    = useState(false)
   const [loading,  setLoading]  = useState(false)
   const [error,    setError]    = useState('')
+  const { t, lang } = useLanguage()
+  const isRTL = RTL_LANGS.includes(lang)
   const [showForgot, setShowForgot] = useState(false)
   const [forgotEmail, setForgotEmail] = useState('')
   const [forgotSent,  setForgotSent]  = useState(false)
 
-  useEffect(() => { const t = setTimeout(() => setReady(true), 80); return () => clearTimeout(t) }, [])
+  useEffect(() => { const timer = setTimeout(() => setReady(true), 80); return () => clearTimeout(timer) }, [])
 
   const handleLogin = () => {
     setError('')
@@ -241,7 +245,7 @@ export default function Login() {
               <div key={p.id} className="p" style={{ left:`${p.left}%`, top:`${p.top}%`, width:`${p.size}px`, height:`${p.size}px`, opacity:p.opacity, animationDuration:`${p.dur}s`, animationDelay:`${p.delay}s` }}/>
             ))}
           </div>
-          <div className="photo-script">Become Her.</div>
+          <div className="photo-script">{t('become_her')}</div>
         </div>
 
         {/* Login column */}
@@ -262,16 +266,16 @@ export default function Login() {
           </div>
 
           <div className="welcome-block">
-            <span className="eyebrow">28-DAY TRANSFORMATION PROGRAM</span>
-            <h1 className="welcome-title">WELCOME BACK</h1>
-            <p className="welcome-desc">Your next workout is waiting.<br/>Continue where you left off.</p>
+            <span className="eyebrow">{t('your_program')}</span>
+            <h1 className="welcome-title">{t('welcome_back')}</h1>
+            <p className="welcome-desc">{t('workout_waiting')}<br/>{t('continue_where')}</p>
           </div>
 
           <div className="form">
             {error && <div className="error-msg">⚠ {error}</div>}
 
             <div className="field">
-              <label className="f-label">Email Address</label>
+              <label className="f-label">{t('email')}</label>
               <input className={`f-input${error && !email ? ' error-field' : ''}`}
                 type="email" value={email}
                 onChange={e => { setEmail(e.target.value); setError('') }}
@@ -280,7 +284,7 @@ export default function Login() {
             </div>
 
             <div className="field">
-              <label className="f-label">Password</label>
+              <label className="f-label">{t('password')}</label>
               <div className="f-wrap">
                 <input className={`f-input with-t${error && !pw ? ' error-field' : ''}`}
                   type={showPw ? 'text' : 'password'}
@@ -289,31 +293,31 @@ export default function Login() {
                   onKeyDown={e => e.key === 'Enter' && handleLogin()}
                   placeholder="••••••••"/>
                 <button className="f-toggle" onClick={() => setShowPw(!showPw)}>
-                  {showPw ? 'Hide' : 'Show'}
+                  {showPw ? t('hide') : t('show')}
                 </button>
               </div>
             </div>
 
             <div className="forgot-row">
-              <button className="forgot" onClick={handleForgot}>Forgot password?</button>
+              <button className="forgot" onClick={handleForgot}>{t('forgot')}</button>
             </div>
 
             <button className="cta" onClick={handleLogin} disabled={loading}>
-              {loading ? <><div className="spinner"/><span>SIGNING IN...</span></> : <span>START TRAINING →</span>}
+              {loading ? <><div className="spinner"/><span>{t('signing_in')}</span></> : <span>{t('sign_in')}</span>}
             </button>
 
             <div className="or">
-              <span className="or-line"/><span className="or-txt">NEW TO AUREVA?</span><span className="or-line"/>
+              <span className="or-line"/><span className="or-txt">{t('new_to_aureva')}</span><span className="or-line"/>
             </div>
 
             <button className="join" onClick={() => navigate('/pricing')}>
-              BEGIN YOUR TRANSFORMATION
+              {t('begin')}
             </button>
             <p className="social-proof">28-day program · Free meal plan · @AurevaFitness</p>
           </div>
 
           <div>
-            <p className="tagline">DISCIPLINE · STRENGTH · CONFIDENCE</p>
+            <p className="tagline">{t('tagline')}</p>
             <div className="footer-links">
               <a href="/about">About</a>
               <a href="/disclaimer">Disclaimer</a>
